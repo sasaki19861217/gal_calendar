@@ -1,0 +1,98 @@
+<!--INC_F'template_head.txt'-->
+<!--INC_F'mtop/hack_day_calendar.txt'-->
+
+<section class="di-body">
+  <form class="di-input__form" action="/t.cgi" method="post">
+
+    <div class="di-input__dayInfo">
+      <ul class="di-input__side">
+        <li>
+          <input type="hidden" name="moon" value="[%moon%]">
+          <div class="di-input__label">月齢</div>
+          <div class="di-input__select">
+            <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月">
+          </div>
+        </li>
+
+        <li>
+          <label class="di-input__label" for="weather">天気</label>
+          <select id="di-weather" class="di-input__select" name="weather">
+            <option value="1">晴れ</option>
+            <option value="2">曇り</option>
+            <option value="3">雨</option>
+            <option value="4">雪</option>
+          </select>
+        </li>
+
+        <li>
+          <label class="di-input__label" for="temperature">気温</label>
+          <select id="di-temperature" class="di-input__select" name="temperature">
+            <option value="1">暑い</option>
+            <option value="2">普通</option>
+            <option value="3">寒い</option>
+          </select>
+        </li>
+      </ul><!--.di-input__side 月齢・天気・気温入力-->
+    </div><!--.di-input__dayInfo-->
+
+    <div class="di-input__area">
+      <div class="di-input__heart">
+        <input type="range" min="1" max="5" step="1" name="heart" value="3" />
+      </div><!--.di-input__heart ハート入力-->
+
+      <div class="di-input__picture">
+        <labe for="di-picture">
+          <img src="/image/diary/picture.sp.480.png" alt="画像アップロード">
+        </labe>
+        <input id="di-picture" type="file" name="pic">
+      </div><!--.di-input__picture 画像-->
+
+      <div class="di-input__title">
+        <input type="text" name="title" value="">
+      </div><!--.di-input__area 日記本文-->
+
+      <textarea name="text" id="di-text" cols="50" rows="30" maxlength="4000"></textarea>
+
+      <div class="di-input__category">
+        <label for="di-cate1">#恋愛</label>
+        <input id="di-cate1" type="radio" name="category" value="1">
+
+        <label for="di-cate2">#仕事</label>
+        <input id="di-cate2" type="radio" name="category" value="2">
+
+        <label for="di-cate3">#家庭</label>
+        <input id="di-cate3" type="radio" name="category" value="3">
+
+        <label for="di-cate4">#友達</label>
+        <input id="di-cate4" type="radio" name="category" value="4">
+
+        <label for="di-cate5">#その他</label>
+        <input id="di-cate5" type="radio" name="category" value="5">
+      </div><!--.di-input__category カテゴリ選択-->
+
+    </div><!--.di-input__area-->
+    <div class="di-btn__space">
+      <input class="di-btn di-btn__edit" type="submit" value="保存する">
+    </div>
+  </form>
+</section>
+
+
+
+<ul class="di-list">
+  <li class="di-list__li">
+    <a href="">
+      <div>
+        <span>2018/08/30</span>
+        <h4>タイトル</h4>
+        <p>キャプション</p>
+      </div>
+      <img src="" alt="">
+    </a>
+    <div>
+      <div><a href="">編集</a></div>
+      <div>削除</div>
+    </div>
+  </li>
+</ul>
+<!--INC_F'template_foot.txt'-->
