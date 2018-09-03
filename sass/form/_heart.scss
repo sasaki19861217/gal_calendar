@@ -1,0 +1,32 @@
+//ハート入力フォーム
+
+.di-input__heart{
+  position: relative;
+
+  input {
+    display: none;
+  }//.di-input__heart input
+
+  > a {
+    display: inline-block;
+    margin: 0 4px;
+    width: 20px;
+    height: 20px;
+    text-shadow: 0px 1px 0 #fff, 0px -1px 0 #fff, 1px 0px 0 #fff, -1px 0px 0 #FFF;
+    text-decoration:none;
+
+    &:before {
+      content: "\e005";
+      font-family: 'Glyphicons Halflings';
+      font-size: 20px;
+      color: #FC77B4;
+    }//a:before
+
+    &.on:before {
+      content: "\e005";
+      color: #fff;
+    }//a.on:before
+
+  }//.di-input__heart a
+
+}
