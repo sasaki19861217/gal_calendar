@@ -1,11 +1,11 @@
 <!--INC_F'template_head.txt'-->
 
-  <section class="di-body">
+<section class="di-body">
 
-    <header class="di-head">
-      <div class="di-day__info">
-        <span class="di-day__date">
-          <CTAG mode="date" format="YYYY年M月D日(W)" param="[%current_date%]">
+  <header class="di-head">
+    <div class="di-day__info">
+      <span class="di-day__date">
+        <CTAG mode="date" format="YYYY年M月D日(W)" param="[%current_date%]">
         </span>
         <span class="di-day__climate">
           <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月齢">／
@@ -41,7 +41,7 @@
       <a class="di-btn di-btn__edit" href="t.cgi?t=m/diary/edit&<!--DEF_P-->">編集する</a>
     </div>
     <div class="di-btn__space">
-      <a class="di-btn di-btn__del" href="t.cgi?t=m/diary/list&<!--DEF_P-->">削除する</a>
+      <a class="di-btn di-btn__del js-dialog__open" href="t.cgi?t=m/diary/list&<!--DEF_P-->">削除する</a>
     </div>
 
     <nav class="di-link__area">
@@ -52,19 +52,43 @@
       <div class="di-btn__space">
         <a class="di-btn di-btn__del" href="t.cgi?t=m/diary/list&<!--DEF_P-->">一覧に戻る</a>
       </div>
-    </nav>
+    </nav><!--.di-link__area-->
 
   </section>
 
-  <div class="js-dialog__save">
-    <div>
-      <h4>日記を保存したよ！</h4>
-      <span>close</span>
+  <div id="js-dialog__del" class="js-dialog__hide hide">
+    <div class="js-dialog__content clearfix">
+      <h4 class="js-dialog__title">本当に削除する？</h4>
+      <div class="js-btn__close">
+        <a class="js-dialog__close">close</a>
+      </div>
       <div>
+        <div class="di-btn__space">
+          <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/list&<!--DEF_P-->">削除する</a>
+        </div>
+        <div class="di-btn__space">
+          <button class="di-btn di-btn__del js-dialog__close">削除しない</button>
+        </div>
+      </div>
+    </div><!--.js-dialog__content-->
+  </div><!--.js-dialog__hide-->
+
+  <div id="js-dialog__save" class="js-dialog__hide hide">
+    <div class="js-dialog__content clearfix">
+      <h4 class="js-dialog__title">日記を保存したよ！</h4>
+      <div class="js-btn__close">
+        <a class="js-dialog__close">close</a>
+      </div>
+      <div class="js-dialog__text">
         <img src="/image/diary/sv.sp.480.png" alt="監修者画像">
         <p>[%text2%]</p>
       </div>
-    </div>
-  </div>
+    </div><!--.js-dialog__content-->
+  </div><!--.js-dialog__hide-->
 
-<!--INC_F'template_foot.txt'-->
+[%IF t == "m/diary/bn"%]<!--ここは保存した際のパラメータが有った場合に書き換える-->
+<script>
+  jsDialog("#js-dialog__save");
+</script>
+[%END%]
+  <!--INC_F'template_foot.txt'-->

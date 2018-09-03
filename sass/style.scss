@@ -1,9 +1,2 @@
 @import "list/main";
-
-h1{
-  color:red;
-  &:hover{
-    font-size: 120%;
-  }
-}
-// テストだよ
+@import "form/main";
