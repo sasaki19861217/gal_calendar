@@ -1,0 +1,41 @@
+ul.di-list__category {
+    display: flex;
+    li {
+        padding: 4px 13px;
+        margin: 0px 2px;
+        background-color: #ea6eac;
+        color: #fff;
+        font-size: 13px;
+    }
+}
+
+.di-list__btn {
+    display: flex;
+    justify-content: center;
+    .di-btn {
+      margin: 0 2px;
+    }
+}
+
+.di-btn__edit {
+    width: 16%;
+}
+
+a.di-list__edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    background-color: #6ecddd;
+    color: #fff;
+}
+
+.di-btn__del {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16%;
+    height: 36px;
+    background-color: #ada19d;
+    color: #fff;
+}
