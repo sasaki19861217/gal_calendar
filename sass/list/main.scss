@@ -1,6 +1,9 @@
-li{
-  color: red;
-  span{
-    color: #000;
-  }
+@import "list/header";
+@import "list/ListBody";
+@import "list/footer";
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
 }
