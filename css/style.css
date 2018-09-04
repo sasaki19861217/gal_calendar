@@ -14,7 +14,7 @@ li span {
   display: none;
 }
 
-.di-input__heart > a {
+.di-input__heart > span {
   display: inline-block;
   margin: 0 4px;
   width: 20px;
@@ -23,14 +23,45 @@ li span {
   text-decoration: none;
 }
 
-.di-input__heart > a:before {
+.di-input__heart > span:before {
   content: "\e005";
   font-family: 'Glyphicons Halflings';
   font-size: 20px;
   color: #FC77B4;
 }
 
-.di-input__heart > a.on:before {
+.di-input__heart > span.on:before {
   content: "\e005";
   color: #fff;
+}
+
+.js-dialog__content {
+  width: 50%;
+  margin: 0;
+  padding: 10px 20px;
+  border: 2px solid #aaa;
+  background: #fff;
+  position: fixed;
+  display: none;
+  z-index: 2;
+}
+
+#js-dialog__overlay {
+  z-index: 1;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.js-btn__close {
+  color: #00f;
+  text-decoration: underline;
+}
+
+.js-btn__close:hover {
+  cursor: pointer;
 }
