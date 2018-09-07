@@ -7,11 +7,11 @@
     background: #fff ;
     position: fixed ;
     display: none ;
-    z-index: 2 ;
+    z-index: 3 ;
   }
 }
 #js-dialog__overlay {
-  z-index: 1 ;
+  z-index: 2 ;
   display: none ;
   position: fixed ;
   top: 0 ;
