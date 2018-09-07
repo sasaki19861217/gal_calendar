@@ -1,1 +1,9 @@
 @import "_heart";
+
+.m-diary {
+  .item-dmy,
+  .btn-shift.next,
+  .item-tabs li {
+    display:none;
+  }
+}

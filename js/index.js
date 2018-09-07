@@ -15,6 +15,18 @@ $(function() {
     }
     $(this).parent().find('.di-input__heart').attr('value', index);
   });
+
+  if(page == "m/diary/top"){
+    $(".di-input__heart span:nth-child(-n+4)").addClass("on");
+  }
+
+  //指定の日付取得
+  $('.days').click(function(){
+    var str = $(this).data("date");
+    $('#dateTime').text(str);
+    $('input:hidden[name="datetime"]').val(str);
+  });
+
 });
 
 //モーダル

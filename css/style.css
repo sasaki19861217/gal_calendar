@@ -1,9 +1,143 @@
-li {
-  color: red;
+.di-list__title {
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  background-color: #ea6eac;
+  color: #fff;
 }
 
-li span {
-  color: #000;
+.di-list__back {
+  display: flex;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+  background-color: #999999;
+  color: #fff;
+  margin: 10px 60px;
+}
+
+ul.di-list__category {
+  display: flex;
+  justify-content: center;
+}
+
+ul.di-list__category li {
+  padding: 4px 13px;
+  margin: 0px 2px;
+  background-color: #ea6eac;
+  color: #fff;
+  font-size: 13px;
+}
+
+hr.diarylist {
+  border-top: 3px solid #ff5e9f;
+  margin: 12px 0;
+}
+
+ul.di-list__ListMain {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+li.di-list__date {
+  padding: 0 4px 10px;
+}
+
+a.di-list__link {
+  display: flex;
+  position: relative;
+}
+
+a.di-list__link::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: -4px;
+  border-top: solid 2px #555;
+  border-right: solid 2px #555;
+  -webkit-transform: rotate(45deg);
+}
+
+.di-list__days {
+  background-color: #ea6eac;
+  color: #fff;
+  padding: 4px 6px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.di-list__DiTitle {
+  color: #ea6eac;
+  display: inline-block;
+  padding: 0 8px;
+}
+
+.di-list__caption {
+  color: #ada19d;
+  font-size: 12px;
+  padding: 2px;
+  display: inline-block;
+}
+
+.di-list__LiPhoto {
+  width: 220px;
+  height: 0;
+}
+
+img.di-list__photo {
+  width: 85%;
+}
+
+.di-list__btn {
+  display: flex;
+  justify-content: center;
+}
+
+.di-list__btn .di-btn {
+  margin: 0 2px;
+}
+
+.di-btn__edit {
+  width: 16%;
+}
+
+a.di-list__edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  background-color: #6ecddd;
+  color: #fff;
+}
+
+.di-btn__del {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16%;
+  height: 36px;
+  background-color: #ada19d;
+  color: #fff;
+}
+
+ul.di-list__month {
+  padding: 12px;
+}
+
+section.di-list__main {
+  background-color: #fff;
+  margin: 0 -12px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }
 
 .di-input__heart {
@@ -33,6 +167,12 @@ li span {
 .di-input__heart > span.on:before {
   content: "\e005";
   color: #fff;
+}
+
+.m-diary .item-dmy,
+.m-diary .btn-shift.next,
+.m-diary .item-tabs li {
+  display: none;
 }
 
 .js-dialog__content {

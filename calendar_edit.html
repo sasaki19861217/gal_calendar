@@ -3,6 +3,8 @@
 
 <section class="di-body">
   <form class="di-input__form" action="/t.cgi" method="post">
+    <input type="hidden" name="t" value="m/diary/bn">
+    <input type="hidden" name="datetime" value="[%datetime%]">
 
     <div class="di-input__dayInfo">
       <ul class="di-input__side">
@@ -69,7 +71,7 @@
         <label for="di-cate5">#‚»‚Ì‘¼</label>
         <input id="di-cate5" type="radio" name="category" value="5" [%IF category == 5%]checked[%END%]>
       </div><!--.di-input__category ƒJƒeƒSƒŠ‘I‘ð-->
-      
+
     </div><!--.di-input__area-->
 
     <figure class="di-upload__picture">
