@@ -20,19 +20,24 @@ ul.di-list__ListMain {
   margin-right: 4px;
 }
 
+.di-list__LiBox {
+  position: relative;
+}
+
 li.di-list__date {
-    padding: 0 4px 10px;
+    margin-bottom: 4px;
 }
 
 a.di-list__link {
     display: flex;
     position: relative;
+    padding: 0 4px;
 }
 
 a.di-list__link::after {
     content: "";
     position: absolute;
-    right: 0px;
+    right: 4px;
     top: 50%;
     display: block;
     width: 12px;
@@ -41,6 +46,11 @@ a.di-list__link::after {
     border-top: solid 2px #555;
     border-right: solid 2px #555;
     -webkit-transform: rotate(45deg);
+}
+
+.di-list__LiText {
+    flex: 1;
+    padding-right: 8px;
 }
 
 .di-list__days {
@@ -60,17 +70,18 @@ a.di-list__link::after {
 .di-list__caption {
     color: #ada19d;
     font-size: 12px;
-    padding: 2px;
+    padding: 4px 0;
     display: inline-block;
 }
 
 .di-list__LiPhoto {
-    width: 220px;
-    height: 0;
+    width: 80px;
+    height: 80px;
+    margin-right: 12px;
 }
 
 img.di-list__photo {
-    width: 85%;
+    width: 100%;
 }
 
 .di-list__btn {
