@@ -1,9 +1,13 @@
 <!--INC_F'template_head.txt'-->
+
 <!--INC_F'mtop/hack_day_calendar.txt'-->
+<p id="dateTime"></p>
 
 <section class="di-body">
   <form class="di-input__form" action="/t.cgi" method="post">
-
+    <input type="hidden" name="t" value="m/diary/bn">
+    <input type="hidden" name="datetime" value="[%datetime%]">
+    <!--DEF_F-->
     <div class="di-input__dayInfo">
       <ul class="di-input__side">
         <li>
@@ -77,6 +81,12 @@
   </form>
 
 </section>
+
+
+<script>
+var page = "[%t%]";
+</script>
+
 
 
 <!--INC_F'template_foot.txt'-->
