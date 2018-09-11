@@ -51,6 +51,7 @@ a.di-list__link::after {
 .di-list__LiText {
     flex: 1;
     padding-right: 8px;
+    max-width: 480px;
 }
 
 .di-list__days {
