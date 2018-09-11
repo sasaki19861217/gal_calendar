@@ -1,7 +1,8 @@
 "use strict";
 
-//ハート入力
+
 $(function() {
+  //ハート入力
   $('.di-input__heart').each(function() {
     for (var i = 0; i < 5; i ++) {
       $(this).append('<span>');
