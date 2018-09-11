@@ -1,6 +1,6 @@
 .js-dialog__{
   &content {
-    width: 50% ;
+    width: 80% ;
     margin: 0 ;
     padding: 10px 20px ;
     border: 2px solid #aaa ;
@@ -27,4 +27,8 @@
   &:hover {
     cursor: pointer ;
   }
+}
+
+.js-dialog__open {
+    height: 41px;
 }
