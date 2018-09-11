@@ -1,0 +1,44 @@
+//月齢・天気・気温
+ul.di-input__side{
+
+  li {
+    float:  left;
+    display: block;
+    width: 24%;
+    margin: 0px 2%;
+    text-align: center;
+
+    &:first-child {
+      margin-left: 10%;
+
+      legend {
+        font-weight:bold;
+        line-height: 33px;
+      }//li:first-child legend
+    }//li:first-child
+  }//ul.di-input__side li
+
+  .di-input__label{
+    font-size: 18px;
+    color: #eb74b2;
+  }
+
+  legend {
+    margin-bottom:  0;
+  }
+
+}//ul.di-input__side
+
+
+.di-input__select {
+  text-align: center;
+  background: #ee98bc;
+  color: #fff;
+  border: 0;
+  border-radius:5px;
+  padding: 6px 4px;
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+}

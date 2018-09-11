@@ -1,33 +1,49 @@
 <!--INC_F'template_head.txt'-->
 <style>
-ul {
-    overflow: hidden;
-    position:relative;
+
+h4.js-dialog__title {
+  background-color: #eb74b2;
+  color: #fff;
+  margin: -10px -20px;
+  padding:  12px;
+  text-align: center;
+  font-size: 20px;
 }
 
-li.di-list__date {
-    width: 100%;
-    background:#fff;
-    overflow: hidden;
-    z-index:2;
-    position: relative;
+.js-dialog__content {
+  border: 2px solid #eb74b2;
 }
 
-.di-list__btn{
-  position:absolute;
-  top:0;
-  right:0;
-  z-index:1;
-  background:#ddd;
-}
-.edit,.edit2 {
-    position: absolute;
-    top: 20%;
-    right: 12px;
-    width: 40px;
-    font-size: 30px;
+.js-btn__close a::after {
+  content: "\e014";
+  display: block;
+  color: #fff;
 }
 
+.js-btn__close {
+  cursor: pointer;
+  font-family: 'Glyphicons Halflings';
+}
+
+.js-btn__close a {
+  position: absolute;
+  top: -6px;
+  right: 6px;
+  font-size: 40px;
+}
+
+.js-btn__close a:hover{
+  text-decoration:none;
+}
+
+.js-dialog__inner {
+  margin:  40px auto 24px;
+}
+
+.js-dialog__inner .di-btn__defa {
+  background-color:  #EC2967;
+  border-color:  #EC2967;
+}
 </style>
 <!--20180904-->
 
@@ -38,7 +54,7 @@ li.di-list__date {
     </div>
 
     <div class="di-list__back">
-      全表示に戻す
+      <a class="di-btn di-btn__del">全表示に戻す</a>
     </div>
   </header>
 
@@ -72,36 +88,36 @@ li.di-list__date {
             <div class="edit">★</div>
           </DTAG>
         </li>
-        <div class="di-list__btn">
-          <div class="di-btn di-btn__edit"><a class="di-list__edit" href="">編集</a></div>
+        <div class="di-list__btn ">
+          <a class="di-btn di-btn__edit" href="">編集</a>
           <div class="di-btn di-btn__del js-dialog__open">削除</div>
         </div>
       </div>
     </ul>
   </section>
 
-<!--ページャスペース-->
+  <!--ページャスペース-->
 
-    <footer class="di-list__foot">
-      <ul class="di-list__month">
-        <li><a>2018年3月</a></li>
-        <li><a>2018年4月</a></li>
-        <li><a>2018年5月</a></li>
-      </ul>
-    </footer>
+  <footer class="di-list__foot">
+    <ul class="di-list__month">
+      <li><a>2018年3月</a></li>
+      <li><a>2018年4月</a></li>
+      <li><a>2018年5月</a></li>
+    </ul>
+  </footer>
 </section>
 
 <!--ダイアログ-->
-  <div id="js-dialog__area" class="js-dialog__hide hide">
-    <div class="js-dialog__content clearfix">
-      <h4 class="js-dialog__title"></h4>
-      <div class="js-btn__close">
-        <a class="js-dialog__close">close</a>
-      </div>
-      <div class="js-dialog__inner">
-      </div>
-    </div><!--.js-dialog__content-->
-  </div><!--.js-dialog__hide-->
+<div id="js-dialog__area" class="js-dialog__hide hide">
+  <div class="js-dialog__content clearfix">
+    <h4 class="js-dialog__title"></h4>
+    <div class="js-btn__close">
+      <a class="js-dialog__close"></a>
+    </div>
+    <div class="js-dialog__inner">
+    </div>
+  </div><!--.js-dialog__content-->
+</div><!--.js-dialog__hide-->
 
 <script>
 var tsJqSwipeX = -1;
@@ -109,39 +125,39 @@ var tsJqSwipeY = -1;
 
 $(function(){
 
-if ('ontouchstart' in window) {
-   // スワイプ処理
+  if ('ontouchstart' in window) {
+    // スワイプ処理
 
-   $("li.di-list__date").bind("touchstart", function(){
-       tsJqSwipeX = event.changedTouches[0].pageX;
-       tsJqSwipeY = event.changedTouches[0].pageY;
-   });
-   $("li.di-list__date").bind("touchend", function(){
-       tsJqSwipeX = -1;
-       flag = 0;
-   });
-   $("li.di-list__date").bind("touchmove", function(){
-       if (Math.abs(event.changedTouches[0].pageY - tsJqSwipeY) > 10) tsJqSwipeX = -1;
-       if (tsJqSwipeX != -1 && Math.abs(event.changedTouches[0].pageX - tsJqSwipeX) > 35) {
-           tsJqSwipeX = -1;
-           // スワイプられた時の処理
-            $('li.di-list__date').animate({"margin-left":"0"},"fast");
-            $('li.di-list__date a').css('pointer-events','auto');
-            if($(this).css("margin-left") == "0px"){
-              $('a',this).css('pointer-events','none');
-              $(this).animate({"margin-left":"-45%"},"fast");
-            }else{
-              $('li.di-list__date a').css('pointer-events','auto');
-              $('li.di-list__date').animate({"margin-left":"0"});
-            }
-       }
-   });
-} else {
-  console.log("PCだよ");
-}
+    $("li.di-list__date").bind("touchstart", function(){
+      tsJqSwipeX = event.changedTouches[0].pageX;
+      tsJqSwipeY = event.changedTouches[0].pageY;
+    });
+    $("li.di-list__date").bind("touchend", function(){
+      tsJqSwipeX = -1;
+      flag = 0;
+    });
+    $("li.di-list__date").bind("touchmove", function(){
+      if (Math.abs(event.changedTouches[0].pageY - tsJqSwipeY) > 10) tsJqSwipeX = -1;
+      if (tsJqSwipeX != -1 && Math.abs(event.changedTouches[0].pageX - tsJqSwipeX) > 35) {
+        tsJqSwipeX = -1;
+        // スワイプられた時の処理
+        $('li.di-list__date').animate({"margin-left":"0"},"fast");
+        $('li.di-list__date a').css('pointer-events','auto');
+        if($(this).css("margin-left") == "0px"){
+          $('a',this).css('pointer-events','none');
+          $(this).animate({"margin-left":"-45%"},"fast");
+        }else{
+          $('li.di-list__date a').css('pointer-events','auto');
+          $('li.di-list__date').animate({"margin-left":"0"});
+        }
+      }
+    });
+  } else {
+    console.log("PCだよ");
+  }
 
-$(".edit").hide();
-$("li.di-list__date").hover(
+  $(".edit").hide();
+  $("li.di-list__date").hover(
     function(){
       $(".edit",this).fadeIn("slow");
     },
@@ -150,21 +166,21 @@ $("li.di-list__date").hover(
     });
 
 
-$(".edit").on('click', function(){
-    $('li.di-list__date').animate({"margin-left":"0"},"fast");
-    $('li.di-list__date a').css('pointer-events','auto');
-    if($(this).parent("li").css("margin-left") == "0px"){
-      $(this).css("display","block");
-      $('+a',this).css('pointer-events','none');
-      $(this).parent("li").animate({"margin-left":"-45%"},"fast");
-    }else{
+    $(".edit").on('click', function(){
+      $('li.di-list__date').animate({"margin-left":"0"},"fast");
       $('li.di-list__date a').css('pointer-events','auto');
-      $('li.di-list__date').animate({"margin-left":"0"});
-      $(this).fadeOut("slow");
-    }
-})
+      if($(this).parent("li").css("margin-left") == "0px"){
+        $(this).css("display","block");
+        $('+a',this).css('pointer-events','none');
+        $(this).parent("li").animate({"margin-left":"-45%"},"fast");
+      }else{
+        $('li.di-list__date a').css('pointer-events','auto');
+        $('li.di-list__date').animate({"margin-left":"0"});
+        $(this).fadeOut("slow");
+      }
+    })
 
-});
+  });
 </script>
 
 <!--INC_F'template_foot.txt'-->

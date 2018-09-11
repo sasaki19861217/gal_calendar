@@ -1,9 +1,48 @@
+@import "_dayInfo";
 @import "_heart";
+@import "_content";
+@import "_category";
 
+
+//日運総合部分
 .m-diary {
   .item-dmy,
   .btn-shift.next,
   .item-tabs li {
     display:none;
   }
+
+  .day-result-content {
+    background-color: #DDFFFD;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px 0;
+    margin: 8px;
+  }
+
+  .section-day {
+    margin-bottom: 12px;
+  }
+
+}//日運総合部分
+
+
+//基本設定
+textarea::placeholder,input::placeholder{
+  opacity:.7;
+}
+
+legend{
+  border:0;
+}
+
+.di-input__form {
+  max-width: 480px;
+  margin: auto;
+  padding: 0 12px;
+}
+
+.di-input__clear::after{
+  content:  "";
+  clear:both;
+  display: block;
 }
