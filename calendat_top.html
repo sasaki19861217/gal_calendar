@@ -1,5 +1,193 @@
 <!--INC_F'template_head.txt'-->
+<style>
+.m-diary .day-result-content {
+    background-color: #DDFFFD;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px 0;
+    margin: 8px;
+}
 
+textarea::placeholder,input::placeholder{
+  opacity:.7;
+}
+
+legend{
+  border:0;
+}
+
+.di-body {
+  border-top: 2px solid #ee98bc;
+  padding-top: 12px;
+}
+
+.m-diary main {
+  background: #fff;
+}
+
+.m-diary .section-day {
+  margin-bottom: 12px;
+}
+
+ul.di-input__side li {
+  float:  left;
+  display: block;
+  width: 24%;
+  margin: 0px 2%;
+  text-align: center;
+}
+
+ul.di-input__side li:first-child {
+  margin-left: 10%;
+}
+
+ul.di-input__side li:first-child legend {
+  font-weight:bold;
+  line-height: 33px;
+}
+
+ul.di-input__side .di-input__label{
+  font-size: 18px;
+}
+
+.di-input__select {
+  text-align: center;
+  background: #ee98bc;
+  color: #fff;
+}
+
+.di-input__select {
+  border: 0;
+  border-radius:5px;
+  padding: 6px 4px;
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.di-input__side legend {
+    margin-bottom:  0;
+}
+
+.di-input__label {
+    color: #eb74b2;
+}
+
+
+.di-input__clear::after{
+  content:  "";
+  clear:both;
+  display: block;
+}
+
+.di-input__heart {
+  background-color: #FC77B4;
+  border-radius: 5px 5px 0 0;
+  padding:  6px;
+  text-align: center;
+  width: 75%;
+  float: left;
+  cursor: pointer;
+}
+
+.di-input__heart span{
+  width: 30px;
+  height: auto;
+  text-align: center;
+}
+
+
+.di-input__heart > span:before{
+    transition:250ms;
+}
+
+.di-input__area {
+  margin-top:  24px;
+}
+
+.di-input__picture input {
+  display: none;
+}
+
+ul.di-input__side li:first-child div {}
+
+  .di-input__picture {
+    width: 20%;
+    float: left;
+    margin-left: 3%;
+    text-align: center;
+  }
+
+  .di-input__picture label{
+    cursor:pointer;
+  }
+
+  .di-input__title input {
+    border: 3px solid #FC77B4;
+    height: 42px;
+    border-radius: 0 5px 0 0;
+    width: 100%;
+    padding: 4px 8px;
+    font-size: 18px;
+    outline: 0;
+  }
+
+  .di-input__form {
+    max-width: 640px;
+    margin: auto;
+  }
+
+  .di-input__area textarea {
+    border: 3px solid #FC77B4;
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+    resize: none;
+    width: 100%;
+    max-height: 240px;
+    padding: 8px;
+    line-height: 1.5;
+    text-align: justify;
+    outline: 0;
+  }
+
+.di-input__category input[type=radio] {
+    display: none;
+    width: 100%;
+}
+
+.di-input__category label {
+    float: left;
+    display: block;
+    cursor: pointer;
+    width: 19%;
+    padding: 4px;
+    margin-left: .8%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 11px;
+    color: #fff;
+    background-color: #FF0180;
+    border: 1px solid #FF0180;
+    border-radius: 3px;
+    opacity: .6;
+    transition:250ms;
+}
+
+.di-input__category label:first-child {
+    margin-left: .5%;
+}
+
+.di-input__category input[type="radio"]:checked + label {
+    background-color:  #FF0180;
+    border-color:#FF0180;
+    opacity:1;
+    -webkit-transition-property: background, color;
+    -webkit-transition-duration: 250ms;
+    -webkit-transition-timing-function: linear;
+    transition:250ms;
+}
+
+</style>
 <!--INC_F'mtop/hack_day_calendar.txt'-->
 <p id="dateTime"></p>
 
@@ -9,72 +197,84 @@
     <input type="hidden" name="datetime" value="[%datetime%]">
     <!--DEF_F-->
     <div class="di-input__dayInfo">
-      <ul class="di-input__side">
-        <li>
-          <input type="hidden" name="moon" value="[%moon%]">
-          <div class="di-input__label">月齢</div>
-          <div class="di-input__select">
-            <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月">
-          </div>
-        </li>
+      <fieldset>
+        <ul class="di-input__side di-input__clear">
+          <li>
+            <input type="hidden" name="moon" value="[%moon%]">
+            <legend><div class="di-input__label">月齢</div></legend>
+            <div class="di-input__select">
+              <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月">
+            </div>
+          </li>
 
-        <li>
-          <label class="di-input__label" for="weather">天気</label>
-          <select id="di-weather" class="di-input__select" name="weather">
-            <option value="1">晴れ</option>
-            <option value="2">曇り</option>
-            <option value="3">雨</option>
-            <option value="4">雪</option>
-          </select>
-        </li>
+          <li>
+            <legend><label class="di-input__label" for="weather">天気</label></legend>
+            <select id="di-weather" class="di-input__select" name="weather">
+              <option value="1">晴れ</option>
+              <option value="2">曇り</option>
+              <option value="3">雨</option>
+              <option value="4">雪</option>
+            </select>
+          </li>
 
-        <li>
-          <label class="di-input__label" for="temperature">気温</label>
-          <select id="di-temperature" class="di-input__select" name="temperature">
-            <option value="1">暑い</option>
-            <option value="2">普通</option>
-            <option value="3">寒い</option>
-          </select>
-        </li>
-      </ul><!--.di-input__side 月齢・天気・気温入力-->
+          <li>
+            <legend><label class="di-input__label" for="temperature">気温</label></legend>
+            <select id="di-temperature" class="di-input__select" name="temperature">
+              <option value="1">暑い</option>
+              <option value="2">普通</option>
+              <option value="3">寒い</option>
+            </select>
+          </li>
+        </ul><!--.di-input__side 月齢・天気・気温入力-->
+      </fieldset>
+
     </div><!--.di-input__dayInfo-->
 
     <div class="di-input__area">
-      <div class="di-input__heart">
-        <input type="range" min="1" max="5" step="1" name="heart" value="3" />
-      </div><!--.di-input__heart ハート入力-->
+      <div class="di-input__clear">
+        <div class="di-input__heart">
+          <input type="range" min="1" max="5" step="1" name="heart" value="3" />
+        </div><!--.di-input__heart ハート入力-->
 
-      <div class="di-input__picture">
-        <labe for="di-picture">
-          <img src="/image/diary/picture.sp.480.png" alt="画像アップロード">
-        </labe>
-        <input id="di-picture" type="file" name="pic">
-      </div><!--.di-input__picture 画像-->
+        <div class="di-input__picture">
+          <label for="di-picture">
+            <img src="/image/diary/picture.sp.480.png" alt="画像">
+            <input id="di-picture" type="file" name="pic">
+          </label>
+        </div><!--.di-input__picture 画像-->
+      </div>
 
-      <div class="di-input__title">
-        <input type="text" name="title" value="">
-      </div><!--.di-input__area 日記本文-->
+      <fieldset>
+        <div class="di-input__title">
+          <input type="text" name="title" value="" placeholder="タイトル">
+        </div><!--.di-input__area 日記本文-->
 
-      <textarea name="text" id="di-text" cols="50" rows="30" maxlength="4000"></textarea>
+        <textarea name="text" id="di-text" cols="50" rows="30" maxlength="4000" placeholder="今日は何があったの？ゆいに教えてね！&#13;&#10;あ、絵文字は使えないよ&#12316;"></textarea>
+      </fieldset>
 
-      <div class="di-input__category">
-        <label for="di-cate1">#恋愛</label>
-        <input id="di-cate1" type="radio" name="category" value="1">
+      <fieldset>
+        <div class="di-input__category">
+          <input id="di-cate1" type="radio" name="category" value="1">
+          <label for="di-cate1">#恋愛</label>
 
-        <label for="di-cate2">#仕事</label>
-        <input id="di-cate2" type="radio" name="category" value="2">
 
-        <label for="di-cate3">#家庭</label>
-        <input id="di-cate3" type="radio" name="category" value="3">
+          <input id="di-cate2" type="radio" name="category" value="2">
+          <label for="di-cate2">#仕事</label>
 
-        <label for="di-cate4">#友達</label>
-        <input id="di-cate4" type="radio" name="category" value="4">
+          <input id="di-cate3" type="radio" name="category" value="3">
+          <label for="di-cate3">#家庭</label>
 
-        <label for="di-cate5">#その他</label>
-        <input id="di-cate5" type="radio" name="category" value="5">
-      </div><!--.di-input__category カテゴリ選択-->
+          <input id="di-cate4" type="radio" name="category" value="4">
+          <label for="di-cate4">#友達</label>
+
+          <input id="di-cate5" type="radio" name="category" value="5" checked>
+          <label for="di-cate5">#その他</label>
+
+        </div><!--.di-input__category カテゴリ選択-->
+      </fieldset>
 
     </div><!--.di-input__area-->
+
     <div class="di-btn__space">
       <input class="di-btn di-btn__edit" type="submit" value="保存する">
     </div>
