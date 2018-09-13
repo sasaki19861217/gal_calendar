@@ -97,6 +97,7 @@ a.di-list__link::after {
 .di-list__LiText {
   flex: 1;
   padding-right: 8px;
+  max-width: 480px;
 }
 
 .di-list__days {
@@ -363,6 +364,14 @@ ul li.di-list__date {
   float: left;
 }
 
+.di-list__ListBody {
+  margin-top: 12px;
+}
+
+.di-list__DiTitle {
+  padding: 8px;
+}
+
 section.di-list__main {
   background-color: #fff;
   margin: 0 -12px;
@@ -422,33 +431,42 @@ ul.di-input__side legend {
   width: 75%;
   float: left;
   cursor: pointer;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
 }
 
 .di-input__heart input {
   display: none;
 }
 
-.di-input__heart > span {
-  display: inline-block;
+.di-input__heart label {
   margin: 0 4px;
-  width: 30px;
-  height: auto;
-  text-shadow: 0px 1px 0 #fff, 0px -1px 0 #fff, 1px 0px 0 #fff, -1px 0px 0 #FFF;
-  text-decoration: none;
-  text-align: center;
+  cursor: pointer;
 }
 
-.di-input__heart > span:before {
+.di-input__heart label::after {
   content: "\e005";
   font-family: 'Glyphicons Halflings';
   font-size: 20px;
   color: #FC77B4;
   transition: 250ms;
+  display: inline-block;
+  margin: 0 2px;
+  width: 30px;
+  height: auto;
+  text-shadow: 0px 1px 0 #fff, 0px -1px 0 #fff, 1px 0px 0 #fff, -1px 0px 0 #FFF;
+  text-decoration: none;
+  text-align: center;
+  transition: 250ms;
 }
 
-.di-input__heart > span.on:before {
+.di-input__heart label:hover::after,
+.di-input__heart label:hover ~ label::after,
+.di-input__heart input[type='radio']:checked ~ label::after {
   content: "\e005";
   color: #fff;
+  transition: 250ms;
 }
 
 .di-input__area {
@@ -576,6 +594,7 @@ legend {
   position: fixed;
   display: none;
   z-index: 3;
+  border: 2px solid #eb74b2;
 }
 
 #js-dialog__overlay {
@@ -600,6 +619,50 @@ legend {
 
 .js-dialog__open {
   height: 41px;
+}
+
+h4.js-dialog__title {
+  background-color: #eb74b2;
+  color: #fff;
+  margin: -10px -20px;
+  padding: 12px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.js-btn__close a
+.js-btn__close {
+  cursor: pointer;
+  font-family: 'Glyphicons Halflings';
+}
+
+.js-btn__close a
+.js-btn__close a {
+  position: absolute;
+  top: -6px;
+  right: 6px;
+  font-size: 40px;
+}
+
+.js-btn__close a
+.js-btn__close a :hover {
+  text-decoration: none;
+}
+
+.js-btn__close a
+.js-btn__close a ::after {
+  content: "\e014";
+  display: block;
+  color: #fff;
+}
+
+.js-dialog__inner {
+  margin: 40px auto 24px;
+}
+
+.js-dialog__inner .di-btn__defa {
+  background-color: #EC2967;
+  border-color: #EC2967;
 }
 
 .di-btn {

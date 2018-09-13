@@ -1,58 +1,11 @@
 <!--INC_F'template_head.txt'-->
 
-<style>
-
-h4.js-dialog__title {
-  background-color: #eb74b2;
-  color: #fff;
-  margin: -10px -20px;
-  padding:  12px;
-  text-align: center;
-  font-size: 20px;
-}
-
-.js-dialog__content {
-  border: 2px solid #eb74b2;
-}
-
-.js-btn__close a::after {
-  content: "\e014";
-  display: block;
-  color: #fff;
-}
-
-.js-btn__close {
-  cursor: pointer;
-  font-family: 'Glyphicons Halflings';
-}
-
-.js-btn__close a {
-  position: absolute;
-  top: -6px;
-  right: 6px;
-  font-size: 40px;
-}
-
-.js-btn__close a:hover{
-  text-decoration:none;
-}
-
-.js-dialog__inner {
-  margin:  40px auto 24px;
-}
-
-.js-dialog__inner .di-btn__defa {
-  background-color:  #EC2967;
-  border-color:  #EC2967;
-}
-</style>
-
 <section class="di-body">
-
+  [%heart%]
   <header class="di-head">
     <div class="di-day__info">
       <span class="di-day__date">
-        <CTAG mode="date" format="YYYY年M月D日(W)" param="[%current_date%]">
+        <CTAG mode="date" format="YYYY年M月D日(W)" param="[%id%]">
         </span>
         <span class="di-day__climate">
           <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月齢">／
@@ -84,20 +37,19 @@ h4.js-dialog__title {
       </div>
 
       <div class="di-btn__space">
-        <a class="di-btn di-btn__edit" href="t.cgi?t=m/diary/edit&<!--DEF_P-->">編集する</a>
+        <a class="di-btn di-btn__edit" href="t.cgi?t=m/diary/edit&id=[%id%]&<!--DEF_P-->">編集する</a>
       </div>
       <div class="di-btn__space">
         <span class="di-btn di-btn__del js-dialog__open">削除する</span>
-        <!--<span class="di-btn di-btn__del js-dialog__open2">削除する</span>-->
       </div>
 
       <nav class="di-link__area">
         <div class="di-btn__space di-btn__side">
-          <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/bn&<!--DEF_P-->">&#9664;&#65038; 前日の日記</a>
-          <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/bn&<!--DEF_P-->">翌日の日記 &#9654;&#65038;</a>
+          <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/bn&id=[%id%]&<!--DEF_P-->">&#9664;&#65038; 前の日記</a>
+          <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/bn&id=[%id%]&<!--DEF_P-->">次の日記 &#9654;&#65038;</a>
         </div>
         <div class="di-btn__space">
-          <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/list&<!--DEF_P-->">一覧に戻る</a>
+          <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/list&category=1&page=1&<!--DEF_P-->">一覧に戻る</a>
         </div>
       </nav><!--.di-link__area-->
 
@@ -119,11 +71,11 @@ h4.js-dialog__title {
     </div><!--.js-dialog__content-->
   </div><!--.js-dialog__hide-->
 
-  [%IF t == "m/diary/bn"%]<!--ここは保存した際のパラメータが有った場合に書き換える-->
-  <script>
-  $(".js-dialog__open2").click(function(){
+  [%IF saveok == 1%]<!--保存した際のパラメータが有った場合-->
+<script>
+$(".js-dialog__open2").click(function(){
     jsDialog("#js-dialog__area","日記を保存したよ！", '<img src="/image/diary/sv.sp.480.png" alt="監修者画像"><p>[%text2%]</p>');
-  });
+});
 </script>
 [%END%]
 <!--INC_F'template_foot.txt'-->
