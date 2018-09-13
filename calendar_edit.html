@@ -5,6 +5,8 @@
   <form class="di-input__form" action="/t.cgi" method="post">
     <input type="hidden" name="t" value="m/diary/bn">
     <input type="hidden" name="datetime" value="[%datetime%]">
+    <input type="hidden" name="id" value="[%id%]">
+    <input type="hidden" name="yyymm" value="<CTAG mode="date" format="YYYYMM" param="[%id%]">">
     <!--DEF_F-->
     <div class="di-input__dayInfo">
       <fieldset>
@@ -43,7 +45,20 @@
     <div class="di-input__area">
       <div class="di-input__clear">
         <div class="di-input__heart">
-          <input type="range" min="1" max="5" step="1" name="heart" value="[%heart%]" />
+          <input id="heart5" type="radio" name="heart" value="5" [%IF heart == 5%]checked[%END%]>
+          <label for="heart5"></label>
+
+          <input id="heart4" type="radio" name="heart" value="4" [%IF heart == 4%]checked[%END%]>
+          <label for="heart4"></label>
+
+          <input id="heart3" type="radio" name="heart" value="3" [%IF heart == 3%]checked[%END%]>
+          <label for="heart3"></label>
+
+          <input id="heart2" type="radio" name="heart" value="2" [%IF heart == 2%]checked[%END%]>
+          <label for="heart2"></label>
+
+          <input id="heart1" type="radio" name="heart" value="1" [%IF heart == 1%]checked[%END%]>
+          <label for="heart1"></label>
         </div><!--.di-input__heart ƒn[ƒg“ü—Í-->
 
         <div class="di-input__picture">

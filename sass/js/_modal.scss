@@ -8,8 +8,10 @@
     position: fixed ;
     display: none ;
     z-index: 3 ;
+    border: 2px solid #eb74b2;
   }
 }
+
 #js-dialog__overlay {
   z-index: 2 ;
   display: none ;
@@ -30,5 +32,47 @@
 }
 
 .js-dialog__open {
-    height: 41px;
+  height: 41px;
+}
+
+
+
+h4.js-dialog__title {
+  background-color: #eb74b2;
+  color: #fff;
+  margin: -10px -20px;
+  padding:  12px;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+.js-btn__close a
+.js-btn__close {
+  cursor: pointer;
+  font-family: 'Glyphicons Halflings';
+
+  a {
+    position: absolute;
+    top: -6px;
+    right: 6px;
+    font-size: 40px;
+    :hover{
+      text-decoration:none;
+    }
+    ::after {
+      content: "\e014";
+      display: block;
+      color: #fff;
+    }
+  }
+}
+
+.js-dialog__inner {
+  margin:  40px auto 24px;
+
+  .di-btn__defa {
+    background-color:  #EC2967;
+    border-color:  #EC2967;
+  }
 }

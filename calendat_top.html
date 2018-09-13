@@ -1,10 +1,12 @@
 <!--INC_F'template_head.txt'-->
+
 <!--INC_F'mtop/hack_day_calendar.txt'-->
 
 <section class="di-body">
   <form class="di-input__form" action="/t.cgi" method="post">
-    <input type="hidden" name="t" value="m/diary/bn">
+    <input type="hidden" name="t" value="m/edit/complete">
     <input type="hidden" name="datetime" value="[%datetime%]">
+    <input type="hidden" name="yyymm" value="<CTAG mode="date" format="YYYYMM" param="[%datetime%]">">
     <!--DEF_F-->
     <div class="di-input__dayInfo">
       <fieldset>
@@ -13,7 +15,7 @@
             <input type="hidden" name="moon" value="[%moon%]">
             <legend><div class="di-input__label">月齢</div></legend>
             <div class="di-input__select">
-              <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月">
+              <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月">
             </div>
           </li>
 
@@ -32,7 +34,8 @@
             <select id="di-temperature" class="di-input__select" name="temperature">
               <option value="1">暑い</option>
               <option value="2">普通</option>
-              <option value="3">寒い</option>
+              <option value="3">涼しい</option>
+              <option value="4">寒い</option>
             </select>
           </li>
         </ul><!--.di-input__side 月齢・天気・気温入力-->
@@ -43,7 +46,20 @@
     <div class="di-input__area">
       <div class="di-input__clear">
         <div class="di-input__heart">
-          <input type="range" min="1" max="5" step="1" name="heart" value="3" />
+          <input id="heart5" type="radio" name="heart" value="5">
+          <label for="heart5"></label>
+
+          <input id="heart4" type="radio" name="heart" value="4">
+          <label for="heart4"></label>
+
+          <input id="heart3" type="radio" name="heart" value="3" checked>
+          <label for="heart3"></label>
+
+          <input id="heart2" type="radio" name="heart" value="2">
+          <label for="heart2"></label>
+
+          <input id="heart1" type="radio" name="heart" value="1">
+          <label for="heart1"></label>
         </div><!--.di-input__heart ハート入力-->
 
         <div class="di-input__picture">
@@ -66,7 +82,6 @@
         <div class="di-input__category">
           <input id="di-cate1" type="radio" name="category" value="1">
           <label for="di-cate1">#恋愛</label>
-
 
           <input id="di-cate2" type="radio" name="category" value="2">
           <label for="di-cate2">#仕事</label>
@@ -95,6 +110,8 @@
 
 <script>
 var page = "[%t%]";
+
+$('input:hidden[name="datetime"]').val('<CTAG mode="date" format="YYYYMMDD">');
 </script>
 
 
