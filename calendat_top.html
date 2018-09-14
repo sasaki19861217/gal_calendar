@@ -1,27 +1,53 @@
 <!--INC_F'template_head.txt'-->
 
-<!--INC_F'mtop/hack_day_calendar.txt'-->
+<style>
+.di-input__area{
+  position:relative;
+}
+.count{
+  position: absolute;
+  right: 12px;
+  bottom: 30px;
+  color: #eb74b2;
+}
+.di-input__area textarea {
+    max-height: 270px;
+    padding-bottom: 23px;
+}
+</style>
 
+<!--INC_F'mtop/hack_day_calendar.txt'-->
+<p id="moon"></p>
 <section class="di-body">
   <form class="di-input__form" action="/t.cgi" method="post">
-    <input type="hidden" name="t" value="m/edit/complete">
+    <input type="hidden" name="t" value="m/diary/edit/complete">
     <input type="hidden" name="datetime" value="[%datetime%]">
-    <input type="hidden" name="yyymm" value="<CTAG mode="date" format="YYYYMM" param="[%datetime%]">">
+    <input type="hidden" name="yyyymm" value="<CTAG mode="date" format="YYYYMM" param="[%datetime%]">">
+      <!--仮-->
+      <input type="hidden" name="id" value="[%id%]">
+      <!--<input type="hidden" name="diary_date" value="<CTAG mode="date" format="YYYYMMDD">">-->
+      <input type="hidden" name="diary_date" value="[%datetime%]">
+      <input type="hidden" name="moonphase" value="[%moonphase%]">
+      <!--<input type="hidden" name="body" value="日記記事本文サンプル">-->
+      <input type="hidden" name="page" value="">
+      <input type="hidden" name="saveok" value="1">
+
+
     <!--DEF_F-->
     <div class="di-input__dayInfo">
       <fieldset>
         <ul class="di-input__side di-input__clear">
           <li>
-            <input type="hidden" name="moon" value="[%moon%]">
+            <input type="hidden" name="moonphase" value="[%moonphase%]">
             <legend><div class="di-input__label">月齢</div></legend>
             <div class="di-input__select">
-              <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月">
+              <img src="/image/diary/moon_phase[%moonphase%].sp.480.png" alt="月">
             </div>
           </li>
 
           <li>
-            <legend><label class="di-input__label" for="weather">天気</label></legend>
-            <select id="di-weather" class="di-input__select" name="weather">
+            <legend><label class="di-input__label" for="weather1">天気</label></legend>
+            <select id="di-weather1" class="di-input__select" name="weather1">
               <option value="1">晴れ</option>
               <option value="2">曇り</option>
               <option value="3">雨</option>
@@ -30,8 +56,8 @@
           </li>
 
           <li>
-            <legend><label class="di-input__label" for="temperature">気温</label></legend>
-            <select id="di-temperature" class="di-input__select" name="temperature">
+            <legend><label class="di-input__label" for="weather2">気温</label></legend>
+            <select id="di-weather2" class="di-input__select" name="weather2">
               <option value="1">暑い</option>
               <option value="2">普通</option>
               <option value="3">涼しい</option>
@@ -46,22 +72,23 @@
     <div class="di-input__area">
       <div class="di-input__clear">
         <div class="di-input__heart">
-          <input id="heart5" type="radio" name="heart" value="5">
-          <label for="heart5"></label>
 
-          <input id="heart4" type="radio" name="heart" value="4">
-          <label for="heart4"></label>
+            <input id="heart5" type="radio" name="hearts" value="5">
+            <label for="heart5"></label>
 
-          <input id="heart3" type="radio" name="heart" value="3" checked>
-          <label for="heart3"></label>
+            <input id="heart4" type="radio" name="hearts" value="4">
+            <label for="heart4"></label>
 
-          <input id="heart2" type="radio" name="heart" value="2">
-          <label for="heart2"></label>
+            <input id="heart3" type="radio" name="hearts" value="3" checked>
+            <label for="heart3"></label>
 
-          <input id="heart1" type="radio" name="heart" value="1">
-          <label for="heart1"></label>
+            <input id="heart2" type="radio" name="hearts" value="2">
+            <label for="heart2"></label>
+
+            <input id="heart1" type="radio" name="hearts" value="1">
+            <label for="heart1"></label>
+
         </div><!--.di-input__heart ハート入力-->
-
         <div class="di-input__picture">
           <label for="di-picture">
             <img src="/image/diary/picture.sp.480.png" alt="画像">
@@ -75,11 +102,12 @@
           <input type="text" name="title" value="" placeholder="タイトル">
         </div><!--.di-input__area 日記本文-->
 
-        <textarea name="text" id="di-text" cols="50" rows="30" maxlength="4000" placeholder="今日は何があったの？ゆいに教えてね！&#13;&#10;あ、絵文字は使えないよ&#12316;"></textarea>
+        <textarea id="diary" name="body" id="di-body" cols="50" rows="30" maxlength="4000" placeholder="今日は何があったの？ゆいに教えてね！&#13;&#10;あ、絵文字は使えないよ&#12316;"></textarea>
       </fieldset>
+      <p class="count">0/4000</p>
 
-      <fieldset>
-        <div class="di-input__category">
+      <div class="di-input__category">
+        <fieldset>
           <input id="di-cate1" type="radio" name="category" value="1">
           <label for="di-cate1">#恋愛</label>
 
@@ -95,8 +123,8 @@
           <input id="di-cate5" type="radio" name="category" value="5" checked>
           <label for="di-cate5">#その他</label>
 
-        </div><!--.di-input__category カテゴリ選択-->
-      </fieldset>
+        </fieldset>
+      </div><!--.di-input__category カテゴリ選択-->
 
     </div><!--.di-input__area-->
 
@@ -109,11 +137,18 @@
 
 
 <script>
-var page = "[%t%]";
+  var page = "[%t%]";
+  $('input:hidden[name="datetime"]').val('<CTAG mode="date" format="YYYYMMDD">');
+  $('input:hidden[name="diary_date"]').val('<CTAG mode="date" format="YYYYMMDD">');
 
-$('input:hidden[name="datetime"]').val('<CTAG mode="date" format="YYYYMMDD">');
+$(function(){
+    $('#diary').bind('keyup',function(){
+        var thisValueLength = $(this).val().length;
+        $('.count').html(thisValueLength + '/4000');
+    });
+});
 </script>
 
-
+</script>
 
 <!--INC_F'template_foot.txt'-->

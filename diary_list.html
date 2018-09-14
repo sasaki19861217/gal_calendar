@@ -8,9 +8,9 @@
       日記一覧
     </div>
     [%IF yyyymm%]
-        <div class="di-list__back">
-          <a class="di-btn di-btn__del">全表示に戻す</a>
-        </div>
+    <div class="di-list__back">
+      <a class="di-btn di-btn__del" href="t.cgi?t=m/diary/list&category=0&page=1&<!--DEF_P-->">全表示に戻す</a>
+    </div>
     [%END%]
   </header>
 
@@ -18,19 +18,19 @@
     <nav>
       <ul class="di-list__category">
         <li class="di-list__sharp">
-          <a href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 1%]0[%ELSE%]1[%END%]&page=1&<!--DEF_P-->">#恋愛</a>
+          <a class="[%IF category == 1%]active[%END%]" href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 1%]0[%ELSE%]1[%END%]&page=1&<!--DEF_P-->">#恋愛</a>
         </li>
         <li class="di-list__sharp">
-          <a href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 2%]0[%ELSE%]2[%END%]&page=1&<!--DEF_P-->">#仕事</a>
+          <a class="[%IF category == 2%]active[%END%]" href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 2%]0[%ELSE%]2[%END%]&page=1&<!--DEF_P-->">#仕事</a>
         </li>
         <li class="di-list__sharp">
-          <a href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 3%]0[%ELSE%]3[%END%]&page=1&<!--DEF_P-->">#家庭</a>
+          <a class="[%IF category == 3%]active[%END%]" href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 3%]0[%ELSE%]3[%END%]&page=1&<!--DEF_P-->">#家庭</a>
         </li>
         <li class="di-list__sharp">
-          <a href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 4%]0[%ELSE%]4[%END%]&page=1&<!--DEF_P-->">#友達</a>
+          <a class="[%IF category == 4%]active[%END%]" href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 4%]0[%ELSE%]4[%END%]&page=1&<!--DEF_P-->">#友達</a>
         </li>
         <li class="di-list__sharp">
-          <a href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 5%]0[%ELSE%]5[%END%]&page=1&<!--DEF_P-->">#その他</a>
+          <a class="[%IF category == 5%]active[%END%]" href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%][%END%]&category=[%IF category == 5%]0[%ELSE%]5[%END%]&page=1&<!--DEF_P-->">#その他</a>
         </li>
       </ul>
     </nav>
@@ -38,43 +38,46 @@
     <hr class="diarylist">
 
     <ul class="di-list__ListMain">
+      [%FOREACH m=menu_list %]
       <div class="di-list__LiBox">
         <li class="di-list__date">
-          <a class="di-list__link" href="t.cgi?t=m/diary/bn&id=[%id%]&<!--DEF_P-->">
+          <a class="di-list__link" href="t.cgi?t=m/diary/bn&id=[%m.id%]&diary_date=[%m.diary_date %]&category=[%m.category%]&yyyymm=[%m.yyyymm%]&page=[%m.page%]&<!--DEF_P-->">
             <div class="di-list__LiText">
-              <div class="di-list__days"><CTAG mode="date" format="YYYY年MM月DD日" param="[%id%]"></div>
-              <div class="di-list__DiTitle">タイトルタイトル</div>
-              <div class="di-list__caption">本文本文本文本文本本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</div>
-            </div>
-            <div class="di-list__LiPhoto">
-              <img class="di-list__photo" src="/image/aura/sv/1.240.jpg" alt="">
-            </div>
-          </a>
-          <DTAG device="pc">
-            <div class="edit">★</div>
-          </DTAG>
-        </li>
-        <div class="di-list__btn ">
-          <a class="di-btn di-btn__edit" href="t.cgi?t=m/diary/edit&id=[%id%]&<!--DEF_P-->">編集</a>
-          <div class="di-btn di-btn__del js-dialog__open">削除</div>
+              <div class="di-list__days"><CTAG mode="date" format="YYYY年MM月DD日" param="[%m.id%]"></div>
+                <div class="di-list__DiTitle">[%m.title%]</div>
+                <div class="di-list__caption">[%m.body%]</div>
+              </div>
+              <div class="di-list__LiPhoto">
+                <img class="di-list__photo" src="/image/aura/sv/1.240.jpg" alt="">
+              </div>
+            </a>
+            <DTAG device="pc">
+              <div class="edit">★</div>
+            </DTAG>
+          </li>
+          <div class="di-list__btn">
+            <a class="di-btn di-btn__edit" href="t.cgi?t=m/diary/edit&id=[%m.id%]&category=[%m.category%]&yyyymm=[%m.yyyymm%]&<!--DEF_P-->">編集</a>
+            <div class="di-btn di-btn__del js-dialog__open">削除</div>
+          </div>
         </div>
-      </div>
-    </ul>
-  </section>
+        [%END%]
+      </ul>
 
-<!--ページャスペース-->
+    <!--INC_F'diary_list__pager.txt'-->
+    <!--ページャスペース-->
+    </section>
+
 
     <footer class="di-list__foot">
-  <!--INC_F'list_pager.txt'-->
       <ul class="di-list__month">
-        <li><a href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%]&category=0[%END%]&page=1&<!--DEF_P-->">2018年3月</a></li>
-        <li><a href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%]&category=0[%END%]&page=1<!--DEF_P-->">2018年4月</a></li>
-        <li><a href="t.cgi?t=m/diary/list[%IF yyyymm%]&yyyymm=[%yyyymm%]&category=0[%END%]&page=1<!--DEF_P-->">2018年5月</a></li>
+        [%FOREACH l=yyyymm_list%]
+        <li><a href="t.cgi?t=m/diary/list&yyyymm=[%l.yyyymm%]&category=[%category%]&page=1&<!--DEF_P-->">[%l.y%]年[%l.m%]月 ([%l.cnt%])</a></li>
+        [%END%]
       </ul>
     </footer>
-</section>
+  </section>
 
-<!--ダイアログ-->
+  <!--ダイアログ-->
   <div id="js-dialog__area" class="js-dialog__hide hide">
     <div class="js-dialog__content clearfix">
       <h4 class="js-dialog__title"></h4>
@@ -86,4 +89,14 @@
     </div><!--.js-dialog__content-->
   </div><!--.js-dialog__hide-->
 
+
+  <script>
+  $('.di-list__caption').each(function(){
+    if ($(this).text().length > 30) {
+      $(this).text($(this).text().substr(0, 27));
+      $(this).append('…');
+    }
+  });
+
+</script>
 <!--INC_F'template_foot.txt'-->

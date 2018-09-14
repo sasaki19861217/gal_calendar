@@ -3,38 +3,40 @@
 
 <section class="di-body">
   <form class="di-input__form" action="/t.cgi" method="post">
-    <input type="hidden" name="t" value="m/diary/bn">
-    <input type="hidden" name="datetime" value="[%datetime%]">
-    <input type="hidden" name="id" value="[%id%]">
-    <input type="hidden" name="yyymm" value="<CTAG mode="date" format="YYYYMM" param="[%id%]">">
+    <input type="hidden" name="t" value="m/diary/edit/complete">
+    <input type="hidden" name="diary_date" value="[%article.datetime%]">
+    <input type="hidden" name="id" value="[%article.id%]">
+    <input type="hidden" name="yyyymm" value="[%article.yyyymm%]">
     <!--DEF_F-->
+
     <div class="di-input__dayInfo">
       <fieldset>
         <ul class="di-input__side di-input__clear">
           <li>
-            <input type="hidden" name="moon" value="[%moon%]">
+            <input type="hidden" name="moon" value="[%article.moonphase%]">
             <legend><div class="di-input__label">月齢</div></legend>
             <div class="di-input__select">
-              <img src="/image/diary/moon_phase[%moon%].sp.480.png" alt="月">
+              <img src="/image/diary/moon_phase[%article.moonphase%].sp.480.png" alt="月">
             </div>
           </li>
 
           <li>
-            <legend><label class="di-input__label" for="weather">天気</label></legend>
-            <select id="di-weather" class="di-input__select" name="weather">
-              <option value="1" [%IF weather == 1%]selected[%END%]>晴れ</option>
-              <option value="2" [%IF weather == 2%]selected[%END%]>曇り</option>
-              <option value="3" [%IF weather == 3%]selected[%END%]>雨</option>
-              <option value="4" [%IF weather == 4%]selected[%END%]>雪</option>
+            <legend><label class="di-input__label" for="weather1">天気</label></legend>
+            <select id="weather1" class="di-input__select" name="weather1">
+              <option value="1" [%IF article.weather1 == 1%]selected[%END%]>晴れ</option>
+              <option value="2" [%IF article.weather1 == 2%]selected[%END%]>曇り</option>
+              <option value="3" [%IF article.weather1 == 3%]selected[%END%]>雨</option>
+              <option value="4" [%IF article.weather1 == 4%]selected[%END%]>雪</option>
             </select>
           </li>
 
           <li>
-            <legend><label class="di-input__label" for="temperature">気温</label></legend>
-            <select id="di-temperature" class="di-input__select" name="temperature">
-              <option value="1" [%IF temperature == 1%]selected[%END%]>暑い</option>
-              <option value="2" [%IF temperature == 2%]selected[%END%]>普通</option>
-              <option value="3" [%IF temperature == 3%]selected[%END%]>寒い</option>
+            <legend><label class="di-input__label" for="weather2">気温</label></legend>
+            <select id="weather2" class="di-input__select" name="weather2">
+              <option value="1" [%IF article.weather2 == 1%]selected[%END%]>暑い</option>
+              <option value="2" [%IF article.weather2 == 2%]selected[%END%]>普通</option>
+              <option value="3" [%IF article.weather2 == 3%]selected[%END%]>涼しい</option>
+              <option value="4" [%IF article.weather2 == 4%]selected[%END%]>寒い</option>
             </select>
           </li>
         </ul><!--.di-input__side 月齢・天気・気温入力-->
@@ -45,19 +47,19 @@
     <div class="di-input__area">
       <div class="di-input__clear">
         <div class="di-input__heart">
-          <input id="heart5" type="radio" name="heart" value="5" [%IF heart == 5%]checked[%END%]>
+          <input id="heart5" type="radio" name="hearts" value="5" [%IF article.hearts == 5%]checked[%END%]>
           <label for="heart5"></label>
 
-          <input id="heart4" type="radio" name="heart" value="4" [%IF heart == 4%]checked[%END%]>
+          <input id="heart4" type="radio" name="hearts" value="4" [%IF article.hearts == 4%]checked[%END%]>
           <label for="heart4"></label>
 
-          <input id="heart3" type="radio" name="heart" value="3" [%IF heart == 3%]checked[%END%]>
+          <input id="heart3" type="radio" name="hearts" value="3" [%IF article.hearts == 3%]checked[%END%]>
           <label for="heart3"></label>
 
-          <input id="heart2" type="radio" name="heart" value="2" [%IF heart == 2%]checked[%END%]>
+          <input id="heart2" type="radio" name="hearts" value="2" [%IF article.hearts == 2%]checked[%END%]>
           <label for="heart2"></label>
 
-          <input id="heart1" type="radio" name="heart" value="1" [%IF heart == 1%]checked[%END%]>
+          <input id="heart1" type="radio" name="hearts" value="1" [%IF article.hearts == 1%]checked[%END%]>
           <label for="heart1"></label>
         </div><!--.di-input__heart ハート入力-->
 
@@ -71,30 +73,27 @@
 
       <fieldset>
         <div class="di-input__title">
-          <input type="text" name="title" value="[%title%]">
+          <input type="text" name="title" value="[%article.title%]">
         </div><!--.di-input__area 日記本文-->
 
-        <textarea name="text" id="di-text" cols="50" rows="30" maxlength="4000">
-          [%user_diary.text%]
-        </textarea>
+        <textarea name="body" id="di-text" cols="50" rows="30" maxlength="4000">[%article.body%]</textarea>
       </fieldset>
 
       <fieldset>
         <div class="di-input__category">
-          <input id="di-cate1" type="radio" name="category" value="1" [%IF category == 1%]checked[%END%]>
+          <input id="di-cate1" type="radio" name="category" value="1" [%IF article.category == 1%]checked[%END%]>
           <label for="di-cate1">#恋愛</label>
 
-
-          <input id="di-cate2" type="radio" name="category" value="2" [%IF category == 2%]checked[%END%]>
+          <input id="di-cate2" type="radio" name="category" value="2" [%IF article.category == 2%]checked[%END%]>
           <label for="di-cate2">#仕事</label>
 
-          <input id="di-cate3" type="radio" name="category" value="3" [%IF category == 3%]checked[%END%]>
+          <input id="di-cate3" type="radio" name="category" value="3" [%IF article.category == 3%]checked[%END%]>
           <label for="di-cate3">#家庭</label>
 
-          <input id="di-cate4" type="radio" name="category" value="4" [%IF category == 4%]checked[%END%]>
+          <input id="di-cate4" type="radio" name="category" value="4" [%IF article.category == 4%]checked[%END%]>
           <label for="di-cate4">#友達</label>
 
-          <input id="di-cate5" type="radio" name="category" value="5" [%IF category == 5%]checked[%END%]>
+          <input id="di-cate5" type="radio" name="category" value="5" [%IF article.category == 5%]checked[%END%]>
           <label for="di-cate5">#その他</label>
 
         </div><!--.di-input__category カテゴリ選択-->

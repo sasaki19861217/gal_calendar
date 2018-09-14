@@ -85,9 +85,16 @@
   border:  3px solid #eb74b2;
   border-top:  0;
   border-radius: 0 0 5px 5px;
-  padding: 12px 6px;
+  // padding: 12px 6px;
   min-height:  200px;
   height: auto;
+
+  p {
+    word-wrap: break-word;
+    padding: 12px 6px;
+    text-align: justify;
+    font-size: 16px;
+  }
 }
 
 .di-display__picture {

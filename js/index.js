@@ -1,7 +1,7 @@
 "use strict";
 
 //ハート入力
-$(function() {
+//$(function(){
 //  $('.di-input__heart').each(function() {
 //    for (var i = 0; i < 5; i ++) {
 //      $(this).append('<span>');
@@ -20,18 +20,22 @@ $(function() {
 //      $(".di-input__heart span:nth-child(-n+4)").addClass("on");
 //  }
 //
+//});
+
+$(function(){
 
   //指定の日付取得
   $('.days').click(function(){
-    var str = $(this).data("date");
-    $('#dateTime').text(str);
-    $('input:hidden[name="datetime"]').val(str);
+      var str = $(this).data("date");
+      $('#moon').text(str);
+      $('input:hidden[name="diary_date"]').val(str);
   });
 
 });
 
+
 //モーダル
-function jsDialog(dialog,title,contents){
+function jsDialog(dialog,title,contents,id,page1,page2,cate1,cate2,ym1,ym2,and,zspid,content2){
   $(dialog).removeClass('hide');
   $(this).blur();
   if($("#js-dialog__overlay")[0]) return false;
@@ -50,9 +54,26 @@ function jsDialog(dialog,title,contents){
   });
 }
 
+
+//listの削除ボタン
+$('.di-list__LiBox .js-dialog__open').on('click', function(){
+    var targetLink = $(this).parent().parent().find("li a").attr('href'),
+         delTarget = targetLink.substr(18),
+         elem = '<div class="di-btn__space"><a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/del' + delTarget + '">削除する</a></div><div class="di-btn__space"><button class="di-btn di-btn__del js-dialog__close">削除しない</button></div>';
+    console.log(elem);
+    jsDialog("#js-dialog__area", "本当に削除する？", elem);
+});
+
+
 //削除ボタンを押したらダイアログを表示
 $(".js-dialog__open").click(function(){
-  jsDialog("#js-dialog__area", "本当に削除する？", '<div class="di-btn__space"><a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/del&id=[%id%]&page=[%page%]&<!--DEF_P-->">削除する</a></div><div class="di-btn__space"><button class="di-btn di-btn__del js-dialog__close">削除しない</button></div>');
+  jsDialog("#js-dialog__area", "本当に削除する？", elem);
+});
+
+$(window).load(function(){
+  if(save == 1 && pageName == 'm/diary/bn'){
+    jsDialog("#js-dialog__area","日記を保存したよ！", elem2);
+  }
 });
 
 
