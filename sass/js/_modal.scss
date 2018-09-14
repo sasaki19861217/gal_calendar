@@ -46,21 +46,19 @@ h4.js-dialog__title {
   font-size: 20px;
 }
 
-
-.js-btn__close a
 .js-btn__close {
   cursor: pointer;
   font-family: 'Glyphicons Halflings';
 
   a {
     position: absolute;
-    top: -6px;
-    right: 6px;
-    font-size: 40px;
-    :hover{
+    top: 0px;
+    right: 8px;
+    font-size: 30px;
+    &:hover{
       text-decoration:none;
     }
-    ::after {
+    &::after {
       content: "\e014";
       display: block;
       color: #fff;

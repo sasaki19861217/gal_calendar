@@ -59,6 +59,10 @@ ul.di-list__category {
       color: #fff;
       font-size: 13px;
       border-radius: 3px;
+
+      &.active {
+        background-color: #FD2C78;
+      }
     }
 }
 
@@ -130,7 +134,7 @@ a.di-list__link::after {
     color: #ada19d;
     font-size: 12px;
     padding: 4px 0;
-    display: inline-block;
+    display: block;
 }
 
 .di-list__LiPhoto {
