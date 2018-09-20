@@ -23,8 +23,14 @@
     background-color: #FC77B4;
   }
 
-  //ボタン二個横並び
+  //ボタン横並び
   &__side{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
     &::after {
       content: "";
       clear: both;
@@ -32,14 +38,24 @@
     }
 
     a{
-      width: 49%;
+      // width: 49%;
       margin-right:2%;
-      float: left;
+      // float: left;
 
       &:last-child{
         margin-right:0;
       }//a:last-child
+
+      &.di-btn{
+        padding: 10px 2px;
+      }
     }
   }
 
+}
+
+.di-btn__defa:hover,
+.di-btn__defa:focus {
+    text-decoration:  none;
+    color: #fff;
 }

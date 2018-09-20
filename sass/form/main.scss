@@ -46,3 +46,20 @@ legend{
   clear:both;
   display: block;
 }
+
+//日記本文
+.di-input__area{
+  position:relative;
+
+  textarea {
+    max-height: 270px;
+    padding-bottom: 23px;
+  }
+
+  .count{
+    position: absolute;
+    right: 12px;
+    bottom: 30px;
+    color: #eb74b2;
+  }
+}

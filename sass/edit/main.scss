@@ -1,0 +1,37 @@
+.di-edit__{
+
+  &head {
+    margin: 0 -12px;
+
+    .current {
+      max-width: 320px;
+      margin: 9px auto;
+      font-size: 11px;
+      text-align: center;
+      line-height: 35px;
+      border-radius: 6px;
+      background-color: #F398BC;
+      color: #FFF;
+    }//.di-edit__head .current
+
+    .date {
+      vertical-align: bottom;
+      font-size: 13px;
+      display: inline;
+      margin-left: .5em;
+      font-weight: normal;
+    }//.di-edit__head .date
+
+  }
+}
+
+
+
+.di-upload__picture{
+  margin: 24px auto;
+  text-align: center;
+
+  img{
+    width: 100%;
+  }//.di-upload__picture img
+}//.di-upload__picture
