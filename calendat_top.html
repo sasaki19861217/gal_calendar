@@ -1,36 +1,26 @@
 <!--INC_F'template_head.txt'-->
 
 <style>
-.di-input__area{
-  position:relative;
-}
-.count{
-  position: absolute;
-  right: 12px;
-  bottom: 30px;
-  color: #eb74b2;
-}
-.di-input__area textarea {
-    max-height: 270px;
-    padding-bottom: 23px;
+.days[data-date="<CTAG mode="date" format="YYYYMMDD" param="[%datetime%]">"] ~ div {
+    pointer-events: none;
+    color: #aaa !important;
 }
 </style>
 
 <!--INC_F'mtop/hack_day_calendar.txt'-->
-<p id="moon"></p>
+<!--<p id="moon"></p>-->
 <section class="di-body">
-  <form class="di-input__form" action="/t.cgi" method="post">
+  <form class="di-input__form" action="/t.cgi" method="post" enctype="multipart/form-data">
     <input type="hidden" name="t" value="m/diary/edit/complete">
     <input type="hidden" name="datetime" value="[%datetime%]">
     <input type="hidden" name="yyyymm" value="<CTAG mode="date" format="YYYYMM" param="[%datetime%]">">
-      <!--‰¼-->
+      <!--ä»®-->
       <input type="hidden" name="id" value="[%id%]">
       <!--<input type="hidden" name="diary_date" value="<CTAG mode="date" format="YYYYMMDD">">-->
       <input type="hidden" name="diary_date" value="[%datetime%]">
       <input type="hidden" name="moonphase" value="[%moonphase%]">
-      <!--<input type="hidden" name="body" value="“ú‹L‹L––{•¶ƒTƒ“ƒvƒ‹">-->
+      <!--<input type="hidden" name="body" value="æ—¥è¨˜è¨˜äº‹æœ¬æ–‡ã‚µãƒ³ãƒ—ãƒ«">-->
       <input type="hidden" name="page" value="">
-      <input type="hidden" name="saveok" value="1">
 
 
     <!--DEF_F-->
@@ -39,32 +29,32 @@
         <ul class="di-input__side di-input__clear">
           <li>
             <input type="hidden" name="moonphase" value="[%moonphase%]">
-            <legend><div class="di-input__label">Œ—î</div></legend>
-            <div class="di-input__select">
-              <img src="/image/diary/moon_phase[%moonphase%].sp.480.png" alt="Œ">
+            <legend><div class="di-input__label">æœˆé½¢</div></legend>
+            <div id="moonphase" class="di-input__select">
+              <!--<span><img src="/image/diary/moon_white/moon_[%moonphase%].sp.480.png" alt="æœˆ:[%moonphase%]"></span>-->
             </div>
           </li>
 
           <li>
-            <legend><label class="di-input__label" for="weather1">“V‹C</label></legend>
+            <legend><label class="di-input__label" for="weather1">å¤©æ°—</label></legend>
             <select id="di-weather1" class="di-input__select" name="weather1">
-              <option value="1">°‚ê</option>
-              <option value="2">“Ü‚è</option>
-              <option value="3">‰J</option>
-              <option value="4">á</option>
+              <option value="1">æ™´ã‚Œ</option>
+              <option value="2">æ›‡ã‚Š</option>
+              <option value="3">é›¨</option>
+              <option value="4">é›ª</option>
             </select>
           </li>
 
           <li>
-            <legend><label class="di-input__label" for="weather2">‹C‰·</label></legend>
+            <legend><label class="di-input__label" for="weather2">æ°—æ¸©</label></legend>
             <select id="di-weather2" class="di-input__select" name="weather2">
-              <option value="1">‹‚¢</option>
-              <option value="2">•’Ê</option>
-              <option value="3">—Á‚µ‚¢</option>
-              <option value="4">Š¦‚¢</option>
+              <option value="1">æš‘ã„</option>
+              <option value="2">æ™®é€š</option>
+              <option value="3">æ¶¼ã—ã„</option>
+              <option value="4">å¯’ã„</option>
             </select>
           </li>
-        </ul><!--.di-input__side Œ—îE“V‹CE‹C‰·“ü—Í-->
+        </ul><!--.di-input__side æœˆé½¢ãƒ»å¤©æ°—ãƒ»æ°—æ¸©å…¥åŠ›-->
       </fieldset>
 
     </div><!--.di-input__dayInfo-->
@@ -88,48 +78,48 @@
             <input id="heart1" type="radio" name="hearts" value="1">
             <label for="heart1"></label>
 
-        </div><!--.di-input__heart ƒn[ƒg“ü—Í-->
+        </div><!--.di-input__heart ãƒãƒ¼ãƒˆå…¥åŠ›-->
         <div class="di-input__picture">
           <label for="di-picture">
-            <img src="/image/diary/picture.sp.480.png" alt="‰æ‘œ">
+            <img src="/image/diary/upload.sp.480.png" alt="ç”»åƒ">
             <input id="di-picture" type="file" name="pic">
           </label>
-        </div><!--.di-input__picture ‰æ‘œ-->
+        </div><!--.di-input__picture ç”»åƒ-->
       </div>
 
       <fieldset>
         <div class="di-input__title">
-          <input type="text" name="title" value="" placeholder="ƒ^ƒCƒgƒ‹">
-        </div><!--.di-input__area “ú‹L–{•¶-->
+          <input type="text" name="title" value=""  maxlength="20" placeholder="ã‚¿ã‚¤ãƒˆãƒ«ï¼ˆ20æ–‡å­—ã¾ã§ï¼‰">
+        </div><!--.di-input__title æ—¥è¨˜ã‚¿ã‚¤ãƒˆãƒ«-->
 
-        <textarea id="diary" name="body" id="di-body" cols="50" rows="30" maxlength="4000" placeholder="¡“ú‚Í‰½‚ª‚ ‚Á‚½‚ÌH‚ä‚¢‚É‹³‚¦‚Ä‚ËI&#13;&#10;‚ AŠG•¶š‚Íg‚¦‚È‚¢‚æ&#12316;"></textarea>
+        <textarea id="diary" name="body" id="di-body" cols="50" rows="30" maxlength="4000" placeholder="ä»Šæ—¥ã¯ä½•ãŒã‚ã£ãŸã®ï¼Ÿã‚†ã„ã«æ•™ãˆã¦ã­ï¼&#13;&#10;ã‚ã€çµµæ–‡å­—ã¯ä½¿ãˆãªã„ã‚ˆ&#12316;"></textarea>
       </fieldset>
       <p class="count">0/4000</p>
 
       <div class="di-input__category">
         <fieldset>
           <input id="di-cate1" type="radio" name="category" value="1">
-          <label for="di-cate1">#—öˆ¤</label>
+          <label for="di-cate1">#æ‹æ„›</label>
 
           <input id="di-cate2" type="radio" name="category" value="2">
-          <label for="di-cate2">#d–</label>
+          <label for="di-cate2">#ä»•äº‹</label>
 
           <input id="di-cate3" type="radio" name="category" value="3">
-          <label for="di-cate3">#‰Æ’ë</label>
+          <label for="di-cate3">#å®¶åº­</label>
 
           <input id="di-cate4" type="radio" name="category" value="4">
-          <label for="di-cate4">#—F’B</label>
+          <label for="di-cate4">#å‹é”</label>
 
           <input id="di-cate5" type="radio" name="category" value="5" checked>
-          <label for="di-cate5">#‚»‚Ì‘¼</label>
+          <label for="di-cate5">#ãã®ä»–</label>
 
         </fieldset>
-      </div><!--.di-input__category ƒJƒeƒSƒŠ‘I‘ğ-->
+      </div><!--.di-input__category ã‚«ãƒ†ã‚´ãƒªé¸æŠ-->
 
     </div><!--.di-input__area-->
 
     <div class="di-btn__space">
-      <input class="di-btn di-btn__edit" type="submit" value="•Û‘¶‚·‚é">
+      <input class="di-btn di-btn__edit" type="submit" value="ä¿å­˜ã™ã‚‹">
     </div>
   </form>
 
@@ -137,18 +127,10 @@
 
 
 <script>
-  var page = "[%t%]";
-  $('input:hidden[name="datetime"]').val('<CTAG mode="date" format="YYYYMMDD">');
-  $('input:hidden[name="diary_date"]').val('<CTAG mode="date" format="YYYYMMDD">');
-
-$(function(){
-    $('#diary').bind('keyup',function(){
-        var thisValueLength = $(this).val().length;
-        $('.count').html(thisValueLength + '/4000');
-    });
-});
-</script>
+var page = "[%t%]",
+     todayDate ="<CTAG mode="date" format="YYYYMMDD">";
+$('input:hidden[name="datetime"]').val('<CTAG mode="date" format="YYYYMMDD">');
+$('input:hidden[name="diary_date"]').val('<CTAG mode="date" format="YYYYMMDD">');
 
 </script>
-
 <!--INC_F'template_foot.txt'-->

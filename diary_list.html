@@ -1,18 +1,18 @@
 <!--INC_F'template_head.txt'-->
 
-<!--20180904-->
-
 <section class="di-list__main">
   <header class="di-list__head">
-    <div class="di-list__title">
-      日記一覧
+    <div class="di-list__title di_input__clear">
+      <div class="col-xs-6 col-xs-offset-3">日記一覧</div>
+      <div class="col-xs-3 text-right"><a class="di-top__link" href="/t.cgi?t=m/diary/top&<!--DEF_P-->"></a></div>
     </div>
-    [%IF yyyymm%]
-    <div class="di-list__back">
-      <a class="di-btn di-btn__del" href="t.cgi?t=m/diary/list&category=0&page=1&<!--DEF_P-->">全表示に戻す</a>
-    </div>
-    [%END%]
   </header>
+
+  [%IF yyyymm%]
+  <div class="di-list__back">
+    <a class="di-btn di-btn__del" href="t.cgi?t=m/diary/list&category=0&page=1&<!--DEF_P-->">全表示に戻す</a>
+  </div>
+  [%END%]
 
   <section class="di-list__ListBody">
     <nav>
@@ -41,22 +41,23 @@
       [%FOREACH m=menu_list %]
       <div class="di-list__LiBox">
         <li class="di-list__date">
-          <a class="di-list__link" href="t.cgi?t=m/diary/bn&id=[%m.id%]&diary_date=[%m.diary_date %]&category=[%m.category%]&yyyymm=[%m.yyyymm%]&page=[%m.page%]&<!--DEF_P-->">
+          <a class="di-list__link" href="t.cgi?t=m/diary/bn&id=[%m.id%]&diary_date=[%m.diary_date %]&category=[%category%]&yyyymm=[%m.yyyymm%]&page=[%page%]&<!--DEF_P-->">
             <div class="di-list__LiText">
               <div class="di-list__days"><CTAG mode="date" format="YYYY年MM月DD日" param="[%m.id%]"></div>
-                <div class="di-list__DiTitle">[%m.title%]</div>
-                <div class="di-list__caption">[%m.body%]</div>
+                <div class="di-list__DiTitle">[%m.title_des%]</div>
+                <div class="di-list__caption">[%m.body_des%]</div>
               </div>
               <div class="di-list__LiPhoto">
-                <img class="di-list__photo" src="/image/aura/sv/1.240.jpg" alt="">
+                <img class="di-list__photo" src="/id.cgi?id=[%m.id%]&<!--DEF_P-->&tn=1">
               </div>
             </a>
             <DTAG device="pc">
               <div class="edit">★</div>
             </DTAG>
           </li>
+
           <div class="di-list__btn">
-            <a class="di-btn di-btn__edit" href="t.cgi?t=m/diary/edit&id=[%m.id%]&category=[%m.category%]&yyyymm=[%m.yyyymm%]&<!--DEF_P-->">編集</a>
+            <a class="di-btn di-btn__edit" href="t.cgi?t=m/diary/edit&id=[%m.id%]&category=[%m.category%]&yyyymm=[%yyyymm%]&<!--DEF_P-->">編集</a>
             <div class="di-btn di-btn__del js-dialog__open">削除</div>
           </div>
         </div>
@@ -89,14 +90,4 @@
     </div><!--.js-dialog__content-->
   </div><!--.js-dialog__hide-->
 
-
-  <script>
-  $('.di-list__caption').each(function(){
-    if ($(this).text().length > 30) {
-      $(this).text($(this).text().substr(0, 27));
-      $(this).append('…');
-    }
-  });
-
-</script>
 <!--INC_F'template_foot.txt'-->

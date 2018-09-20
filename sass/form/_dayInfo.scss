@@ -4,12 +4,12 @@ ul.di-input__side{
   li {
     float:  left;
     display: block;
-    width: 24%;
+    width: 28%;
     margin: 0px 2%;
     text-align: center;
 
     &:first-child {
-      margin-left: 10%;
+      margin-left: 4%;
 
       legend {
         font-weight:bold;
@@ -32,7 +32,7 @@ ul.di-input__side{
 
 .di-input__select {
   text-align: center;
-  background: #ee98bc;
+  background: #F298BB;
   color: #fff;
   border: 0;
   border-radius:5px;
@@ -41,4 +41,55 @@ ul.di-input__side{
   height: 40px;
   font-size: 16px;
   cursor: pointer;
+}
+
+#moonphase{
+  span{
+    display: block;
+    width: 30px;
+    margin: auto;
+    position: relative;
+    top: -1px;
+
+    img{
+      height: 30px;
+      top: 5px;
+    }
+  }
+}
+
+
+
+ul.di-input__side li{
+
+  &:not(:first-child) {
+    select {
+      padding-left: 15%;
+      -webkit-appearance: none;
+      -moz-appearance:none;
+      appearance:none;
+    }//li:not(:first-child) select
+  }
+  &:nth-child(2) label::after,
+  &:last-child label::after {
+    content:"\e072";
+    display: block;
+    color: #fff;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg);
+    position: absolute;
+    bottom: 12px;
+    right: 6%;
+    font-size: 12px;
+  }
+
+  &:nth-child(2) label::after{
+    right: 38.5%;
+  }
+
+  &:not(:first-child) label {
+    font-family: 'Glyphicons Halflings';
+    margin-bottom:7px;
+  }
 }

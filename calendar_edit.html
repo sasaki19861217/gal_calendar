@@ -1,8 +1,24 @@
 <!--INC_F'template_head.txt'-->
-<!--INC_F'mtop/hack_day_calendar.txt'-->
+<style>
+.section-day {
+  display:none;
+}
+
+</style>
+
+<!--‚òÖINC_F'mtop/hack_day_calendar.txt'-->
+
+<header class="di-edit__head di-input__clear">
+  <div class="col-xs-8 col-xs-offset-2">
+    <div class="current">
+      ÁèæÂú®„ÅÆË°®Á§∫<span class="date"><CTAG mode="date" format="YYYYÂπ¥MÊúàDÊó•" param="[%article.diary_date%]"></span>
+    </div>
+  </div>
+</header>
+
 
 <section class="di-body">
-  <form class="di-input__form" action="/t.cgi" method="post">
+  <form class="di-input__form" action="/t.cgi" method="post" enctype="multipart/form-data">
     <input type="hidden" name="t" value="m/diary/edit/complete">
     <input type="hidden" name="diary_date" value="[%article.datetime%]">
     <input type="hidden" name="id" value="[%article.id%]">
@@ -14,32 +30,32 @@
         <ul class="di-input__side di-input__clear">
           <li>
             <input type="hidden" name="moon" value="[%article.moonphase%]">
-            <legend><div class="di-input__label">åéóÓ</div></legend>
-            <div class="di-input__select">
-              <img src="/image/diary/moon_phase[%article.moonphase%].sp.480.png" alt="åé">
+            <legend><div class="di-input__label">ÊúàÈΩ¢</div></legend>
+            <div id="moonphase" class="di-input__select">
+              <span><img src="/image/diary/moon_white/moon_[%article.moonphase%].sp.480.png" alt="Êúà:[%article.moonphase%]"></span>
             </div>
           </li>
 
           <li>
-            <legend><label class="di-input__label" for="weather1">ìVãC</label></legend>
+            <legend><label class="di-input__label" for="weather1">Â§©Ê∞ó</label></legend>
             <select id="weather1" class="di-input__select" name="weather1">
-              <option value="1" [%IF article.weather1 == 1%]selected[%END%]>ê∞ÇÍ</option>
-              <option value="2" [%IF article.weather1 == 2%]selected[%END%]>ì‹ÇË</option>
-              <option value="3" [%IF article.weather1 == 3%]selected[%END%]>âJ</option>
-              <option value="4" [%IF article.weather1 == 4%]selected[%END%]>ê·</option>
+              <option value="1" [%IF article.weather1 == 1%]selected[%END%]>Êô¥„Çå</option>
+              <option value="2" [%IF article.weather1 == 2%]selected[%END%]>Êõá„Çä</option>
+              <option value="3" [%IF article.weather1 == 3%]selected[%END%]>Èõ®</option>
+              <option value="4" [%IF article.weather1 == 4%]selected[%END%]>Èõ™</option>
             </select>
           </li>
 
           <li>
-            <legend><label class="di-input__label" for="weather2">ãCâ∑</label></legend>
+            <legend><label class="di-input__label" for="weather2">Ê∞óÊ∏©</label></legend>
             <select id="weather2" class="di-input__select" name="weather2">
-              <option value="1" [%IF article.weather2 == 1%]selected[%END%]>èãÇ¢</option>
-              <option value="2" [%IF article.weather2 == 2%]selected[%END%]>ïÅí </option>
-              <option value="3" [%IF article.weather2 == 3%]selected[%END%]>ó¡ÇµÇ¢</option>
-              <option value="4" [%IF article.weather2 == 4%]selected[%END%]>ä¶Ç¢</option>
+              <option value="1" [%IF article.weather2 == 1%]selected[%END%]>Êöë„ÅÑ</option>
+              <option value="2" [%IF article.weather2 == 2%]selected[%END%]>ÊôÆÈÄö</option>
+              <option value="3" [%IF article.weather2 == 3%]selected[%END%]>Ê∂º„Åó„ÅÑ</option>
+              <option value="4" [%IF article.weather2 == 4%]selected[%END%]>ÂØí„ÅÑ</option>
             </select>
           </li>
-        </ul><!--.di-input__side åéóÓÅEìVãCÅEãCâ∑ì¸óÕ-->
+        </ul><!--.di-input__side ÊúàÈΩ¢„ÉªÂ§©Ê∞ó„ÉªÊ∞óÊ∏©ÂÖ•Âäõ-->
       </fieldset>
 
     </div><!--.di-input__dayInfo-->
@@ -61,55 +77,64 @@
 
           <input id="heart1" type="radio" name="hearts" value="1" [%IF article.hearts == 1%]checked[%END%]>
           <label for="heart1"></label>
-        </div><!--.di-input__heart ÉnÅ[Égì¸óÕ-->
+        </div><!--.di-input__heart „Éè„Éº„ÉàÂÖ•Âäõ-->
 
         <div class="di-input__picture">
           <label for="di-picture">
-            <img src="/image/diary/picture.sp.480.png" alt="âÊëú">
+            <img src="/image/diary/upload.sp.480.png" alt="ÁîªÂÉè">
             <input id="di-picture" type="file" name="pic">
           </label>
-        </div><!--.di-input__picture âÊëú-->
+        </div><!--.di-input__picture ÁîªÂÉè-->
       </div>
 
       <fieldset>
         <div class="di-input__title">
-          <input type="text" name="title" value="[%article.title%]">
-        </div><!--.di-input__area ì˙ãLñ{ï∂-->
+          <input type="text" name="title" value="[%article.title%]" maxlength="20">
+        </div><!--.di-input__area Êó•Ë®òÊú¨Êñá-->
 
-        <textarea name="body" id="di-text" cols="50" rows="30" maxlength="4000">[%article.body%]</textarea>
+        <textarea id="diary" name="body" id="di-text" cols="50" rows="30" maxlength="4000">[%article.body%]</textarea>
       </fieldset>
+      <p class="count">0/4000</p>
 
       <fieldset>
         <div class="di-input__category">
           <input id="di-cate1" type="radio" name="category" value="1" [%IF article.category == 1%]checked[%END%]>
-          <label for="di-cate1">#óˆà§</label>
+          <label for="di-cate1">#ÊÅãÊÑõ</label>
 
           <input id="di-cate2" type="radio" name="category" value="2" [%IF article.category == 2%]checked[%END%]>
-          <label for="di-cate2">#édéñ</label>
+          <label for="di-cate2">#‰ªï‰∫ã</label>
 
           <input id="di-cate3" type="radio" name="category" value="3" [%IF article.category == 3%]checked[%END%]>
-          <label for="di-cate3">#â∆íÎ</label>
+          <label for="di-cate3">#ÂÆ∂Â∫≠</label>
 
           <input id="di-cate4" type="radio" name="category" value="4" [%IF article.category == 4%]checked[%END%]>
-          <label for="di-cate4">#óFíB</label>
+          <label for="di-cate4">#ÂèãÈÅî</label>
 
           <input id="di-cate5" type="radio" name="category" value="5" [%IF article.category == 5%]checked[%END%]>
-          <label for="di-cate5">#ÇªÇÃëº</label>
+          <label for="di-cate5">#„Åù„ÅÆ‰ªñ</label>
 
-        </div><!--.di-input__category ÉJÉeÉSÉäëIë-->
+        </div><!--.di-input__category „Ç´„ÉÜ„Ç¥„É™ÈÅ∏Êäû-->
       </fieldset>
 
     </div><!--.di-input__area-->
 
     <figure class="di-upload__picture">
-      <img src="" alt="">
+      <img src="/id.cgi?id=[%article.id%]&<!--DEF_P-->">
     </figure>
 
     <div class="di-btn__space">
-      <input class="di-btn di-btn__edit" type="submit" value="ï€ë∂Ç∑ÇÈ">
+      <input class="di-btn di-btn__edit" type="submit" value="‰øùÂ≠ò„Åô„Çã">
+    </div>
+
+    <div class="di-btn__space">
+      <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/list&category=0&page=1&<!--DEF_P-->">‰∏ÄË¶ß„Å´Êàª„Çã</a>
     </div>
   </form>
-
 </section>
 
+
+<script>
+  var thisValueLength = $('#diary').val().length;
+  $('.count').html(thisValueLength + '/4000');
+</script>
 <!--INC_F'template_foot.txt'-->

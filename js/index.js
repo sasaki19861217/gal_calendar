@@ -22,6 +22,7 @@
 //
 //});
 
+
 $(function(){
 
   //指定の日付取得
@@ -29,6 +30,25 @@ $(function(){
       var str = $(this).data("date");
       $('#moon').text(str);
       $('input:hidden[name="diary_date"]').val(str);
+  });
+
+  //日記本文文字カウント
+  $('#diary').bind('keyup',function(){
+      var thisValueLength = $(this).val().length;
+      $('.count').html(thisValueLength + '/4000');
+  });
+
+  //「今日」ボタン押下
+  $('#js-btn-today').on('click', function(){
+      $('input:hidden[name="diary_date"]').val(todayDate);
+  });
+
+  //「先週」ボタン押下
+  $('div[role^="prev"]').on('click', function(){
+      var prevDate = $('#js-week-prev div:nth-child(1)').data('date');
+    console.log(prevDate);
+    $('#moon').text(prevDate);
+      $('input:hidden[name="diary_date"]').val(prevDate);
   });
 
 });
@@ -54,6 +74,14 @@ function jsDialog(dialog,title,contents,id,page1,page2,cate1,cate2,ym1,ym2,and,z
   });
 }
 
+//listのキャプション
+$('.di-list__caption').each(function(){
+  if ($(this).text().length > 30) {
+    $(this).text($(this).text().substr(0, 27));
+    $(this).append('…');
+  }
+});
+
 
 //listの削除ボタン
 $('.di-list__LiBox .js-dialog__open').on('click', function(){
@@ -70,12 +98,15 @@ $(".js-dialog__open").click(function(){
   jsDialog("#js-dialog__area", "本当に削除する？", elem);
 });
 
-$(window).load(function(){
-  if(save == 1 && pageName == 'm/diary/bn'){
-    jsDialog("#js-dialog__area","日記を保存したよ！", elem2);
+
+$(window).on('load',function(){
+  var url = location.search.substr(3,10);
+  if(url == 'm/diary/bn'){
+    if(save == 1 ){
+      jsDialog("#js-dialog__area","日記を保存したよ！", elem2);
+    }
   }
 });
-
 
 $( window ).resize( centeringModalSyncer ) ;
 

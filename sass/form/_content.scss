@@ -6,6 +6,15 @@
     float: left;
     margin-left: 3%;
     text-align: center;
+    position: relative;
+
+    img {
+      width: 50px;
+      margin-bottom:  0;
+      position: absolute;
+      bottom: -25px;
+      left: 12%;
+    }//.di-input__picture img
 
     input {
       display: none;
