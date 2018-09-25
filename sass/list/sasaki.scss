@@ -291,7 +291,7 @@ ul {
   }
 
   &DiTitle {
-    padding: 8px;
+    padding: 8px 0;
   }
 
   &month {
@@ -308,5 +308,13 @@ ul {
     li {
       width: 50%;
     }
+  }
+}
+
+
+@media (max-width:320px){
+  .di-list__DiTitle,
+  .di-list__days{
+    font-size:12px;
   }
 }

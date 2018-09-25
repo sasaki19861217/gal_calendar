@@ -82,6 +82,15 @@ $('.di-list__caption').each(function(){
   }
 });
 
+//listのタイトル
+$('.di-list__DiTitle').each(function(){
+  var w = $(window).width();
+  console.log(w);
+  if ($(this).text().length >= 10) {
+    $(this).text($(this).text().substr(0, 8));
+    $(this).append('…');
+  }
+});
 
 //listの削除ボタン
 $('.di-list__LiBox .js-dialog__open').on('click', function(){
@@ -105,6 +114,10 @@ $(window).on('load',function(){
     if(save == 1 ){
       jsDialog("#js-dialog__area","日記を保存したよ！", elem2);
     }
+var url =$(location).attr('search'),
+url = url.replace("&saveok=1", "");
+console.log(url);
+history.replaceState('', '', url);
   }
 });
 

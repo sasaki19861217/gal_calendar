@@ -27,7 +27,7 @@
         float: left;
         display: block;
         color: #fff;
-        padding: 6px 4px;
+        padding: 6px 4px 4px;
         position: relative;
         margin-left: 6px;
 
@@ -51,9 +51,18 @@
           left: 36px;
         }//li::after
 
-        &:first-child .di-day__img {
-          height: 28px;
-        }//li:first-child::after
+        &:first-child{
+          padding-top:10px;
+
+          img {
+            width:70%;
+            height:70%;
+          }//li:first-child img
+
+          .di-day__img {
+            height: 28px;
+          }//li:first-child .di-day__img
+        }//li:first-child
 
         &:nth-child(2)::after {
           left: 40px;
@@ -106,7 +115,7 @@
         content: "\e005";
         font-family: 'Glyphicons Halflings';
         font-size: 20px;
-        color: #eb74b2;
+        color: #FC77B4;
         transition: 250ms;
       }//span::before
 
