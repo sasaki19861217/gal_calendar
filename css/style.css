@@ -427,7 +427,7 @@ ul li.di-list__date {
 }
 
 .di-list__DiTitle {
-  padding: 8px;
+  padding: 8px 0;
 }
 
 .di-list__month a {
@@ -443,6 +443,13 @@ ul li.di-list__date {
 
 .di-list__month li {
   width: 50%;
+}
+
+@media (max-width: 320px) {
+  .di-list__DiTitle,
+  .di-list__days {
+    font-size: 12px;
+  }
 }
 
 section.di-list__main {
@@ -500,11 +507,11 @@ ul.di-input__side legend {
   width: 30px;
   margin: auto;
   position: relative;
-  top: -1px;
+  top: 1px;
 }
 
 #moonphase span img {
-  height: 30px;
+  height: 25px;
   top: 5px;
 }
 
@@ -570,7 +577,7 @@ ul.di-input__side li:not(:first-child) label {
   content: "\e005";
   font-family: 'Glyphicons Halflings';
   font-size: 24px;
-  color: #eb74b2;
+  color: #FC77B4;
   transition: 250ms;
   display: inline-block;
   margin: 0 2px;
@@ -902,7 +909,7 @@ h4.js-dialog__title {
   float: left;
   display: block;
   color: #fff;
-  padding: 6px 4px;
+  padding: 6px 4px 4px;
   position: relative;
   margin-left: 6px;
 }
@@ -925,6 +932,15 @@ h4.js-dialog__title {
   position: absolute;
   top: 11px;
   left: 36px;
+}
+
+.di-head .di-day__info ul li:first-child {
+  padding-top: 10px;
+}
+
+.di-head .di-day__info ul li:first-child img {
+  width: 70%;
+  height: 70%;
 }
 
 .di-head .di-day__info ul li:first-child .di-day__img {
@@ -980,7 +996,7 @@ h4.js-dialog__title {
   content: "\e005";
   font-family: 'Glyphicons Halflings';
   font-size: 20px;
-  color: #eb74b2;
+  color: #FC77B4;
   transition: 250ms;
 }
 

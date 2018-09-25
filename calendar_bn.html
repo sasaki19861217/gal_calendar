@@ -1,70 +1,5 @@
 <!--INC_F'template_head.txt'-->
 
-<style>
-/*
-.di-bn__body{
-    padding-top: 6px;
-}
-
-.di-day__info {
-    display: flex;
-}
-
-.di-day__info ul {
-    flex:  1;
-    padding-left: 4%;
-    text-align: center;
-}
-
-.di-day__info ul img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: inline;
-}
-
-.di-day__info ul li {
-    float: left;
-    display: block;
-    color: #fff;
-    padding: 6px 4px;
-    position: relative;
-    margin-left: 6px;
-}
-
-.di-day__img {
-    height: 30px;
-    width: 30px;
-}
-
-.di-day__date {
-    flex: 1;
-    line-height: 40px;
-    text-align: right;
-}
-
-.di-day__info ul li::after {
-    content: "／";
-    color: #ee97cc;
-    position: absolute;
-    top: 11px;
-    left: 32px;
-}
-
-.di-day__info ul li:nth-child(2)::after {
-    left: 35px;
-}
-
-.di-day__info ul li:last-child::after {
-    content: none;
-}
-
-li:first-child .di-day__img {
-    height: 28px;
-}
-  */
-</style>
-
 [%SWITCH article.category #カテゴリの変数%]
 [%CASE 1%]
   [% cate = "恋愛" %]
@@ -85,12 +20,6 @@ li:first-child .di-day__img {
       <div class="di-day__date">
         <CTAG mode="date" format="YYYY年M月D日(W)" param="[%article.diary_date%]">
       </div>
-        <!--
-      <span class="di-day__climate">
-        <img src="/image/diary/moon_pink/moon_[%article.moonphase%].sp.480.png" alt="[%article.moonphase%]">／
-        <img src="/image/diary/weather1/select[%article.weather1%].sp.480.png" alt="[%article.weather1%]">／
-        <img src="/image/diary/weather2/select[%article.weather2%].sp.480.png" alt="[%article.weather2%]">
-      </span>--><!--.di-day__climate-->
 
         <ul class="di-input__clear">
           <li>
@@ -149,7 +78,7 @@ li:first-child .di-day__img {
         <a class="di-btn di-btn__defa [%UNLESS article.next%]di-elem__hidden[%END%]" href="t.cgi?t=m/diary/bn&page=[%page%]&id=[%article.next%]&<!--DEF_P-->">次の日記 &#9654;&#65038;</a>
       </div>
       <div class="di-btn__space">
-        <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/list&category=[%category%]&page=[%page%]&<!--DEF_P-->">一覧に戻る</a>
+        <a class="di-btn di-btn__defa" href="t.cgi?t=m/diary/list&category=0&page=1&<!--DEF_P-->">一覧に戻る</a>
       </div>
     </nav><!--.di-link__area-->
 
