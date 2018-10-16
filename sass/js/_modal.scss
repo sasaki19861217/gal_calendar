@@ -68,6 +68,26 @@ h4.js-dialog__title {
 
 .js-dialog__inner {
   margin:  40px auto 24px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  img{
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-right: 10px;
+  }
+
+ p{
+   -webkit-box-flex: 1;
+   -moz-box-flex: 1;
+   -ms-flex: 1;
+   -webkit-flex: 1;
+   flex: 1;
+ }
 
   .di-btn__defa {
     background-color:  #EC2967;

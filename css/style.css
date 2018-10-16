@@ -1,7 +1,6 @@
 .di-body {
   margin: 0 -12px;
   border-top: 2px solid #ee98bc;
-  padding-top: 12px;
 }
 
 .di-body a {
@@ -305,6 +304,10 @@ a.di-list__link::after {
   display: block;
 }
 
+.di-list__caption br {
+  display: none;
+}
+
 .di-list__LiPhoto {
   width: 64px;
   height: 64px;
@@ -376,7 +379,7 @@ ul li.di-list__date {
 
 .di-list__btn {
   position: absolute;
-  top: 25%;
+  top: 18%;
   right: 0;
   z-index: 1;
   width: 45%;
@@ -481,8 +484,9 @@ ul.di-input__side li:first-child legend {
 }
 
 ul.di-input__side .di-input__label {
-  font-size: 18px;
+  font-size: 14px;
   color: #eb74b2;
+  font-family: 'Glyphicons Halflings';
 }
 
 ul.di-input__side legend {
@@ -542,7 +546,7 @@ ul.di-input__side li:nth-child(2) label::after {
 
 ul.di-input__side li:not(:first-child) label {
   font-family: 'Glyphicons Halflings';
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 
 .di-input__heart {
@@ -613,8 +617,8 @@ ul.di-input__side li:not(:first-child) label {
   width: 50px;
   margin-bottom: 0;
   position: absolute;
-  bottom: -25px;
-  left: 12%;
+  bottom: -17px;
+  left: 10%;
 }
 
 .di-input__area .di-input__picture input {
@@ -713,7 +717,7 @@ legend {
 .di-input__form {
   max-width: 480px;
   margin: auto;
-  padding: 0 12px;
+  padding: 4px 12px;
 }
 
 .di-input__clear::after {
@@ -807,6 +811,26 @@ h4.js-dialog__title {
 
 .js-dialog__inner {
   margin: 40px auto 24px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.js-dialog__inner img {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 10px;
+}
+
+.js-dialog__inner p {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
 }
 
 .js-dialog__inner .di-btn__defa {
@@ -888,7 +912,7 @@ h4.js-dialog__title {
 .di-head .di-day__info {
   display: flex;
   padding: 0px 12px 6px;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   color: #ed98bc;
 }
@@ -1011,12 +1035,12 @@ h4.js-dialog__title {
   border-left: 0;
   border-bottom: 0;
   border-radius: 0 5px 0 0;
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
   color: #eb74b2;
   width: 25%;
   height: 41px;
-  line-height: 41px;
+  line-height: 39px;
 }
 
 .di-display__title {
@@ -1048,6 +1072,7 @@ h4.js-dialog__title {
 
 .di-display__picture img {
   max-width: 100%;
+  border-radius: 5px;
 }
 
 .di-elem__hidden {
@@ -1056,6 +1081,7 @@ h4.js-dialog__title {
 
 .di-edit__head {
   margin: 0 -12px;
+  border-top: 2px solid #eb74b2;
 }
 
 .di-edit__head .current {
@@ -1078,10 +1104,12 @@ h4.js-dialog__title {
 }
 
 .di-upload__picture {
-  margin: 24px auto;
+  margin: 10px auto;
   text-align: center;
 }
 
 .di-upload__picture img {
   width: 100%;
+  border: 3px solid #eb74b2;
+  border-radius: 5px;
 }

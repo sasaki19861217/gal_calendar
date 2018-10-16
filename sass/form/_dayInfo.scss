@@ -19,8 +19,10 @@ ul.di-input__side{
   }//ul.di-input__side li
 
   .di-input__label{
-    font-size: 18px;
+    // font-size: 18px;
+    font-size: 14px;
     color: #eb74b2;
+    font-family: 'Glyphicons Halflings';
   }
 
   legend {
@@ -90,6 +92,7 @@ ul.di-input__side li{
 
   &:not(:first-child) label {
     font-family: 'Glyphicons Halflings';
-    margin-bottom:7px;
+    // margin-bottom:7px;
+    margin-bottom:8px;
   }
 }

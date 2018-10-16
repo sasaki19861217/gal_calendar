@@ -2,6 +2,7 @@
 
   &head {
     margin: 0 -12px;
+    border-top: 2px solid #eb74b2;
 
     .current {
       max-width: 320px;
@@ -28,10 +29,13 @@
 
 
 .di-upload__picture{
-  margin: 24px auto;
+  // margin: 24px auto;
+  margin: 10px auto;
   text-align: center;
 
   img{
     width: 100%;
+    border: 3px solid #eb74b2;
+    border-radius: 5px;
   }//.di-upload__picture img
 }//.di-upload__picture
