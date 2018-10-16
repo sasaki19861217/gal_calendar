@@ -8,7 +8,8 @@
   .di-day__info {
     display: flex;
     padding: 0px 12px 6px;
-    font-size: 16px;
+    // font-size: 16px;
+    font-size: 14px;
     text-align: center;
     color: #ed98bc;
 
@@ -137,12 +138,14 @@
   border-left:  0;
   border-bottom:  0;
   border-radius: 0 5px 0 0;
-  font-size: 16px;
+  // font-size: 16px;
+  font-size: 15px;
   text-align: center;
   color: #eb74b2;
   width: 25%;
   height: 41px;
-  line-height: 41px;
+  // line-height: 41px;
+  line-height: 39px;
 }
 
 .di-display__title {
@@ -175,6 +178,7 @@
 
 .di-display__picture img {
   max-width: 100%;
+  border-radius: 5px;
 }
 
 
